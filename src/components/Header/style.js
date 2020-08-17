@@ -8,6 +8,7 @@ export const Nav = styled.nav`
   * {
     color: ${TEXT_COLOR_PRIMARY};
     font-family: Roboto;
+    user-select: none;
   }
 
   color: white;
@@ -16,7 +17,7 @@ export const Nav = styled.nav`
   align-items: center;
   width: 100%;
   height: 80px;
-  padding: 10px;
+  padding: 0px 30px;
   background: #ffffff;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
   justify-content: space-between;
@@ -34,7 +35,7 @@ export const Nav = styled.nav`
     display: flex;
     position: absolute;
     top: 18px;
-    right: 10px;
+    right: 15px;
     width: 40px;
     height: 40px;
     border-radius: 28px;
@@ -89,7 +90,7 @@ export const Nav = styled.nav`
     align-items: center;
     justify-content: center;
 
-    width: 85%;
+    width: 95%;
     height: 100%;
   }
 `;
