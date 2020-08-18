@@ -1,24 +1,26 @@
 import React from 'react';
 import { Nav } from './style.js';
-import Logo from './assets/logo.svg';
+import Logo from './assets/Logo.png';
+import ButtonIcon from '../ButtonIcon/index';
+import { faAddressBook } from '@fortawesome/free-solid-svg-icons';
 
-export default () => {
+export default ({ name }) => {
   return (
     <>
       <Nav>
-        <img src={Logo} alt="" />
+        <img src={Logo} alt="Logo DevPad" />
         <div className="external">
           <div className="space"></div>
           <div className="spacefinal"></div>
-          <span className="header-name"> Homepage</span>
+          <span className="header-name"> {name || 'Sem nome'}</span>
         </div>
-        <a href="http://www.google.com.br">
-          <button>
-            <div>
-              <span className="button-name">Adicionar Anotação</span>
-            </div>
-          </button>
-        </a>
+        <ButtonIcon
+          name="Adicionar Anotação"
+          icon={faAddressBook}
+          onClick={() => {
+            console.log('Clicado');
+          }}
+        />
       </Nav>
     </>
   );

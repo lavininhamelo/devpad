@@ -10,7 +10,7 @@ export const Nav = styled.nav`
     font-family: Roboto;
     user-select: none;
   }
-
+  z-index: 5;
   color: white;
   background: red;
   display: flex;
@@ -22,38 +22,10 @@ export const Nav = styled.nav`
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
   justify-content: space-between;
 
-  button {
-    background-color: ${SECONDARY_COLOR};
-    cursor: pointer;
-    border-radius: 28px;
-    width: 222px;
-    height: 42px;
-    border: none;
-  }
-  button::after {
-    content: '+';
-    display: flex;
-    position: absolute;
-    top: 18px;
-    right: 15px;
-    width: 40px;
-    height: 40px;
-    border-radius: 28px;
-
-    font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 28px;
-
-    background-color: ${PRIMARY_COLOR};
-    border: 3px solid white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
   div.external {
-    width: 600px;
+    width: 800px;
     display: flex;
+
     align-items: center;
     justify-content: center;
     height: 80px;
@@ -81,16 +53,8 @@ export const Nav = styled.nav`
   div.external span {
     font-style: normal;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 11pt;
     line-height: 21px;
     transform: skew(20deg);
-  }
-  button div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 95%;
-    height: 100%;
   }
 `;
