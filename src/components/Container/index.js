@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container } from './style.js';
-import CardList from '../CardList/index';
-import TagList from '../TagList/index';
+
+import TagList from '../TagList';
+import TagSwitcher from '../TagSwitcher';
 
 import Pesquisar from '../Pesquisar/index';
 const tags = [
@@ -17,6 +18,7 @@ export default () => {
     <Container>
       <Pesquisar />
       <TagList tags={tags} />
+      <TagSwitcher />
     </Container>
   );
 };
