@@ -24,11 +24,10 @@ export default ({ title, tags }) => {
   }
   return (
     <Card>
-      <Fundo gradient={returnNewGradient} />
-      <Container>
-        <h2>{title}</h2>
+      <h2>{title}</h2>
+      <div className="tags">
         <TagList tags={tags} />
-      </Container>
+      </div>
     </Card>
   );
 };

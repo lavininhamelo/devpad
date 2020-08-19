@@ -2,47 +2,43 @@ import styled from 'styled-components';
 
 export const Card = styled.div`
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 315px;
-
-  margin-right: 20px;
-`;
-
-export const Fundo = styled.div`
-  background: ${(props) => props.gradient()};
-  border-radius: 20px 0px 0px 20px;
-  width: 10px;
-  height: 100%;
-`;
-
-export const Container = styled.div`
-  display: flex;
   flex-direction: column;
-  width: 305px;
-  border: 1px solid red;
+  align-items: center;
+  width: 310px;
   height: auto;
+  margin-right: 20px;
   background: #ffffff;
-  box-shadow: 3px 3px 40px rgba(0, 0, 0, 0.21);
+  padding: 20px;
   border-radius: 20px;
-  padding: 20px 20px;
-  z-index: 2;
+  box-shadow: 3px 3px 40px rgba(0, 0, 0, 0.21);
 
+  top: 0;
+  bottom: 0;
+  margin-bottom: 20px;
+  transition: all 200ms ease;
   h2 {
     display: flex;
-    flex: 1;
-    align-items: center;
+    justify-content: flex-start;
     font-weight: bold;
     font-size: 16px;
+    width: 100%;
     line-height: 21px;
     color: #333333;
+    margin-bottom: 5px;
   }
-
-  div {
-    margin-top: 8px;
-    flex: 1;
+  div.tags {
     display: flex;
-    flex-direction: row;
+    width: 100%;
+    padding: 2px 0px;
+    height: 100%;
+  }
+  div.tags > * {
     flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  :hover {
+    position: relative;
+    top: -8px;
+    cursor: pointer;
   }
 `;

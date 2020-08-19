@@ -16,4 +16,12 @@ export const Container = styled.div`
   height: ${(props) => (props.dense ? '23px' : '30px')};
   font-size: 10px;
   flex-grow: 0 !important;
+  margin-bottom: 5px;
+  transition: background 200ms ease;
+  :hover {
+    cursor: pointer;
+    color: ${(props) => (props.outlined ? 'white' : props.color)};
+
+    background: ${(props) => (props.outlined ? props.color : '')};
+  }
 `;

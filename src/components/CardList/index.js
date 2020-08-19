@@ -6,8 +6,8 @@ export default ({ cards }) => {
   return (
     <CardList>
       {cards &&
-        cards.map(({ title, tags }) => {
-          return <Card key={title} title={title} tags={tags} />;
+        cards.map(({ title, tags }, index) => {
+          return <Card key={index} title={title} tags={tags} />;
         })}
     </CardList>
   );

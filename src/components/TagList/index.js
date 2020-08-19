@@ -6,9 +6,15 @@ export default ({ tags }) => {
   return (
     <TagList>
       {tags &&
-        tags.map(({ name, color, dense, outlined }) => {
+        tags.map(({ name, color, dense, outlined }, index) => {
           return (
-            <Tag color={color} name={name} dense={dense} outlined={outlined} />
+            <Tag
+              key={index}
+              color={color}
+              name={name}
+              dense={dense}
+              outlined={outlined}
+            />
           );
         })}
     </TagList>

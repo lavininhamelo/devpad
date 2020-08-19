@@ -14,5 +14,20 @@
     "titleBar.activeForeground": "#e7e7e7",
     "titleBar.inactiveBackground": "#10101099",
     "titleBar.inactiveForeground": "#e7e7e799"
+  },
+
+  "files.exclude": {
+    "**/.git": true, // this is a default value
+    "**/.DS_Store": true, // this is a default value
+
+    "**/node_modules": true, // this excludes all folders
+    // named "node_modules" from
+    // the explore tree
+    "**/public": true, // this excludes all folders
+    "**/.vscode": true, // this excludes all folders
+    // alternative version
+    "node_modules": true // this excludes the folder
+    // only from the root of
+    // your workspace
   }
 }

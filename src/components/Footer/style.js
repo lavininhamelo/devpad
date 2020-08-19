@@ -7,5 +7,7 @@ export const Footer = styled.footer`
   min-height: 80px;
   align-items: center;
   justify-content: center;
-  bottom: 0;
+  position: absolute;
+  top: 100vh;
+  margin-top: 50px;
 `;
