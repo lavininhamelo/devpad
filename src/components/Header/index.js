@@ -14,6 +14,7 @@ export default ({ name }) => {
           <div className="spacefinal"></div>
           <span className="header-name"> {name || 'Sem nome'}</span>
         </div>
+
         <ButtonIcon
           name="Adicionar Anotação"
           icon={faAddressBook}
