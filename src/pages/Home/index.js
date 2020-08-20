@@ -1,10 +1,10 @@
 import React from 'react';
 import { Container } from './style.js';
 
-import TagList from '../TagList';
-import CardList from '../CardList';
+import TagList from '../../components/TagList';
+import CardList from '../../components/CardList';
 
-import Pesquisar from '../Pesquisar/index';
+import Seach from '../../components/Search/index';
 const tags_card = [
   { id: 1, color: '#2d66a9', name: 'css', dense: true, outlined: false },
   { id: 2, color: '#F69A57', name: 'HTML', dense: true, outlined: false },
@@ -24,7 +24,7 @@ const tags_filter = [
 export default () => {
   return (
     <Container>
-      <Pesquisar />
+      <Seach />
       <TagList tags={tags_filter} />
       <CardList
         cards={[

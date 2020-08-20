@@ -4,14 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { Container } from './style';
 
-function Pesquisar() {
+function Seach() {
   return (
     <Container>
-      <input type="text" name="search" placeholder="Pesquisar..." />
+      <input type="text" name="search" placeholder="Seach..." />
       {/* <FontAwesomeIcon icon={faUniversity} size={20} /> */}
       <FontAwesomeIcon icon="coffee" />
     </Container>
   );
 }
 
-export default Pesquisar;
+export default Seach;
