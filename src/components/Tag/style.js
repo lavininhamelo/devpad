@@ -22,7 +22,6 @@ export const Container = styled.div`
   :hover {
     cursor: pointer;
     color: ${(props) => (props.outlined ? 'white' : props.color)};
-
-    background: ${(props) => (props.outlined ? props.color : '')};
+    background: ${(props) => (props.outlined ? props.color : 'white')};
   }
 `;

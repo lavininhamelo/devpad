@@ -14,9 +14,9 @@ export const Card = styled.div`
   box-shadow: 3px 3px 40px rgba(0, 0, 0, 0.21);
   top: 0;
   bottom: 0;
-
   margin-bottom: 20px;
   transition: all 200ms ease;
+
   ::after {
     content: '';
     border-top-left-radius: 20px;
@@ -39,10 +39,10 @@ export const Card = styled.div`
     width: 100%;
     height: auto;
     line-height: 21px;
-
     color: #333333;
     margin-bottom: 5px;
   }
+
   div.tags {
     display: flex;
     width: 100%;
