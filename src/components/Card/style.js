@@ -25,7 +25,7 @@ export const Card = styled.div`
     width: 10px;
     position: absolute;
     top: 50%;
-    left: 0%;
+    left: -1%;
     transform: translate(-50%, -50%);
     background: ${(props) => (props.gradient ? props.gradient() : 'black')};
   }
