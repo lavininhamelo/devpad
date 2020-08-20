@@ -10,9 +10,10 @@ import Tag from '../Tag';
 
 export default (props) => {
   const [availableTags, setAvailableTags] = React.useState([]);
-  const [colorPicker, setColorPicker] = React.useState('#000');
+  const [colorPicker, setColorPicker] = React.useState();
   const [isColorPickerActive, setIsColorPickerActive] = React.useState(false);
   const [tagInput, setTagInput] = React.useState();
+
   function createNewTag(tagName) {
     let isExists = availableTags.some((value) => tagName === value.name);
     if (isExists) {
@@ -24,6 +25,7 @@ export default (props) => {
 
     availableTags.push({ name: tagName, color: colorPicker });
     setTagInput('');
+
     return toast.success('Tag criada com sucesso.');
   }
 
@@ -41,13 +43,19 @@ export default (props) => {
                 if (e.key === 'Enter') {
                   return createNewTag(tagInput);
                 }
+
+                setIsColorPickerActive(false);
+              }}
+              onFocus={() => {
                 setIsColorPickerActive(false);
               }}
               onChange={(event) => setTagInput(event.target.value)}
             ></input>
             <ColorPicker
               defaultColor={colorPicker}
-              onColorSelected={(color) => setColorPicker(color)}
+              onColorSelected={(color) => {
+                setColorPicker(color);
+              }}
               isColorPickerActive={isColorPickerActive}
               setIsColorPickerActive={setIsColorPickerActive}
             />

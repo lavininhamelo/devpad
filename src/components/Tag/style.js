@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
   text-transform: uppercase;
   border: 2px solid ${(props) => props.color};
   background: ${(props) => (props.outlined ? 'transparent' : props.color)};

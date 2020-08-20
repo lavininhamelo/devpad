@@ -1,6 +1,6 @@
 import React from 'react';
 import TagList from '../TagList';
-import { Card, Fundo, Container } from './style.js';
+import { Card } from './style.js';
 export default ({ title, tags }) => {
   const colors = [
     '#e36396',
@@ -23,11 +23,13 @@ export default ({ title, tags }) => {
     return `linear-gradient(180deg, ${colorOne} 0%, ${colorTwo} 100%);`;
   }
   return (
-    <Card>
-      <h2>{title}</h2>
-      <div className="tags">
-        <TagList tags={tags} />
-      </div>
-    </Card>
+    <div className="items">
+      <Card gradient={returnNewGradient}>
+        <h2>{title}</h2>
+        <div className="tags">
+          <TagList tags={tags} />
+        </div>
+      </Card>
+    </div>
   );
 };

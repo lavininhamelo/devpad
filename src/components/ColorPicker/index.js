@@ -8,7 +8,7 @@ export default ({
   isColorPickerActive,
   setIsColorPickerActive,
 }) => {
-  const [color, setColor] = React.useState(defaultColor || '#FFF');
+  const [color, setColor] = React.useState(defaultColor || 'black');
   return (
     <>
       <ColorPicker>
@@ -23,6 +23,7 @@ export default ({
               color={color}
               onChangeComplete={(color) => {
                 setColor(color.hex);
+
                 onColorSelected(color.hex);
               }}
             />

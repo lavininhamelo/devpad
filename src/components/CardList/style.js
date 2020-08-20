@@ -4,6 +4,8 @@ export const CardList = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  align-items: center;
+  margin-top: 50px;
+  height: 100%;
+  align-items: initial;
   justify-content: flex-start;
 `;
