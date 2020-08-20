@@ -5,7 +5,7 @@ export const TagSwitcher = styled.div`
   display: flex;
   flex-direction: column;
   width: 250px;
-  height: 250px;
+  height: auto;
 
   box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.15);
   border-radius: 20px;

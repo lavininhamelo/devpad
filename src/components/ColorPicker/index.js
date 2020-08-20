@@ -1,25 +1,27 @@
 import React from 'react';
 import { ColorPicker } from './style';
 import { BlockPicker } from 'react-color';
-export default ({ defaultColor, onColorSelected, onClick }) => {
+export default ({
+  defaultColor,
+  onColorSelected,
+  onClick,
+  isColorPickerActive,
+  setIsColorPickerActive,
+}) => {
   const [color, setColor] = React.useState(defaultColor || '#FFF');
-
-  const [isVisibleContainer, setIsVisibleContainer] = React.useState(false);
   return (
     <>
-      <ColorPicker color={color}>
+      <ColorPicker>
         <div
           className="circleColor"
-          onClick={() => {
-            setIsVisibleContainer(!isVisibleContainer);
-          }}
+          style={{ backgroundColor: color }}
+          onClick={() => setIsColorPickerActive(!isColorPickerActive)}
         ></div>
-        {isVisibleContainer && (
+        {isColorPickerActive && (
           <div className="container">
             <BlockPicker
               color={color}
               onChangeComplete={(color) => {
-                setIsVisibleContainer(false);
                 setColor(color.hex);
                 onColorSelected(color.hex);
               }}

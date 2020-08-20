@@ -20,10 +20,7 @@ export const ColorPicker = styled.div`
     z-index: 5;
     width: 20px;
     height: 20px;
-    border: 2px solid #cecece;
+    border: 0.5px solid #cccccc;
     border-radius: 50%;
-    background-color: ${(props) => {
-      return props.color ? props.color : 'green';
-    }};
   }
 `;
