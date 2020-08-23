@@ -57,4 +57,7 @@ export const Nav = styled.nav`
     line-height: 21px;
     transform: skew(20deg);
   }
+  a{
+    text-decoration:none;
+  }
 `;

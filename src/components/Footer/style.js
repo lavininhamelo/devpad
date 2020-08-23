@@ -8,6 +8,7 @@ export const Footer = styled.footer`
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 100vh;
+  top:calc(100vh - 120px);
+  left:0;
   margin-top: 50px;
 `;

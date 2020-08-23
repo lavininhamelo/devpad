@@ -8,6 +8,7 @@ export const Container = styled.div`
   text-transform: uppercase;
   border: 2px solid ${(props) => props.color};
   background: ${(props) => (props.outlined ? 'transparent' : props.color)};
+ 
   color: ${(props) => (props.outlined ? props.color : 'white')};
   border-radius: 23px;
   padding: ${(props) => (props.dense ? '3.5px 10px' : '7px 12px')};
@@ -19,6 +20,16 @@ export const Container = styled.div`
   flex-grow: 0 !important;
   margin-bottom: 5px;
   transition: background 200ms ease;
+  background:${(props)=>{
+    if(props.selected){
+      return  props.outlined ? props.color : 'white'
+    }
+  }};
+  color:${(props)=>{
+    if(props.selected){
+      return  props.outlined ?  'white' : props.color
+    }
+  }};
   :hover {
     cursor: pointer;
     color: ${(props) => (props.outlined ? 'white' : props.color)};

@@ -4,9 +4,12 @@ import App from './App';
 import GlobalStyle from './styles/GlobalStyles';
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <>
+    {' '}
     <App />
     <GlobalStyle />
-  </React.StrictMode>,
+  </>,
+  // </React.StrictMode>,
   document.getElementById('root'),
 );

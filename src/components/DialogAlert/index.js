@@ -3,10 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default ({ type }) => {
-  return (
-    <>
-      {type === 'error' && (
-        <ToastContainer
+  return <ToastContainer
           position="top-right"
           autoClose={2000}
           hideProgressBar
@@ -17,10 +14,11 @@ export default ({ type }) => {
           draggable
           pauseOnHover={false}
         />
-      )}
-    </>
-  );
+    
+    
+  
 };
+
 export const options = {
   position: 'top-right',
   autoClose: 2000,

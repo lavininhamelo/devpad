@@ -5,6 +5,7 @@ import TagList from '../../components/TagList';
 import CardList from '../../components/CardList';
 
 import Seach from '../../components/Search/index';
+import Footer from '../../components/Footer/index.js';
 const tags_card = [
   { id: 1, color: '#2d66a9', name: 'css', dense: true, outlined: false },
   { id: 2, color: '#F69A57', name: 'HTML', dense: true, outlined: false },
@@ -40,6 +41,7 @@ export default () => {
           },
         ]}
       ></CardList>
+      <Footer/>
     </Container>
   );
 };

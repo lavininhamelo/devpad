@@ -8,14 +8,33 @@ import DialogAlert, { options } from '../DialogAlert';
 import ColorPicker from '../ColorPicker';
 import Tag from '../Tag';
 
-export default (props) => {
+import {TAGS} from '../../fakeData/tags'
+export default ({onTagIsClicked},props) => {
   const [availableTags, setAvailableTags] = React.useState([]);
-  const [colorPicker, setColorPicker] = React.useState();
+  const [colorPicker, setColorPicker] = React.useState('#000');
   const [isColorPickerActive, setIsColorPickerActive] = React.useState(false);
   const [tagInput, setTagInput] = React.useState();
 
+
+  React.useEffect(()=>{
+    setAvailableTags(TAGS.avalaibleTags)
+  },[])
+
+  function toggleTagSelected(tagName){
+    let changed = availableTags.map((item)=>{
+      if(item.name === tagName){
+        item.selected = !item.selected;
+      }
+      return item
+    })
+    setAvailableTags(changed)
+  }
+  
+
+
+
   function createNewTag(tagName) {
-    let isExists = availableTags.some((value) => tagName === value.name);
+    let isExists = availableTags.some((value) => tagName.toLowerCase() === value.name.toLowerCase());
     if (isExists) {
       return toast.error(`Já existe uma tag: ${tagName}`, options);
     }
@@ -31,7 +50,7 @@ export default (props) => {
 
   return (
     <>
-      <DialogAlert type="error" />
+      <DialogAlert/>
       <TagSwitcher>
         <div className="inputExternal">
           <div className="inputContainer">
@@ -50,7 +69,7 @@ export default (props) => {
                 setIsColorPickerActive(false);
               }}
               onChange={(event) => setTagInput(event.target.value)}
-            ></input>
+            />
             <ColorPicker
               defaultColor={colorPicker}
               onColorSelected={(color) => {
@@ -60,16 +79,19 @@ export default (props) => {
               setIsColorPickerActive={setIsColorPickerActive}
             />
           </div>
-          <div className="iconContainer" onClick={() => createNewTag(tagInput)}>
+          <div className="iconContainer" onClick={() => createNewTag((tagInput || ''))}>
             <FontAwesomeIcon icon={faPlus} />
           </div>
         </div>
 
         <div className="tagContainer">
           {availableTags &&
-            availableTags.map(({ name, color }) => {
+            availableTags.map(({ name, color,selected}) => {
               return (
-                <Tag key={name} name={name} color={color} outlined dense />
+                <Tag key={name} name={name} color={color} selected={selected} onClick={()=>{
+                  toggleTagSelected(name,color,selected)
+                  onTagIsClicked(name,color,selected)
+                }} outlined dense/>
               );
             })}
         </div>
