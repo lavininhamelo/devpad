@@ -23,9 +23,20 @@ function CreateNote() {
   const [isVisibleTag, setIsVisibleTag] = useState(false);
 
   function handleTag(name,color,selected){
-    let  oldValues = [...tagsSelected]
-    oldValues.push({name,color,selected})
-    setTagsSelected(oldValues)
+    if(tagsSelected.filter(item=>item.name === name).length >0){
+      let copy = [...tagsSelected]
+      let newArray = copy.filter(item=>item.name!==name)
+      return setTagsSelected(newArray)
+    }
+      
+      let  oldValues = [...tagsSelected]
+      oldValues.push({name,color,selected})
+      setTagsSelected(oldValues)
+    
+
+    
+
+    
   }
 
 
