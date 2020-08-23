@@ -1,13 +1,18 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: flex;
-  width: 60%;
+  flex: 1;
+  width: 50%;
   flex-direction: column;
-  position:relative;
   padding: 64px 0px;
-  
-  
+
+    @media(max-width: 600px) {
+          width: 70%;
+    }
+
+     @media(max-width: 415px) {
+          width: 80%;
+    }
 `;
 
 export const Caption = styled.div`
@@ -74,17 +79,31 @@ export const ContainerURL = styled.div`
 `;
 export const ButtonTag = styled.div`
   display: flex;
-  width:200px;
-  padding:0px 10px;
+  min-width: 145px;
   height:30px;
   align-items:center;
   justify-content:center;
   margin-bottom:20px;
   border-radius: 30px;
   justify-content:center;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #ccc;
+  color: #ccc;
   :hover {
     cursor: pointer;
+  }
+
+  p{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 13px;
+  }
+
+  span{
+    font-size: 13px;
+    margin-left: 8px;
+    padding: 0 4px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
   }
 `;
 
@@ -98,7 +117,6 @@ export const AddTagContainer = styled.div`
   align-items: flex-start;
   width:100%;
   color: #e5e5e5;
-  font-family: 'Roboto';
   width:100%;
   
   height:auto;

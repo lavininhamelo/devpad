@@ -11,10 +11,7 @@ export default ({ color, name, outlined, dense, children, ...rest }) => {
   }, [focus]);
 
   return (
-    <Container
-      onMouseEnter={() => setFocus(true)}
-      onMouseLeave={() => setFocus(false)}
-    >
+    <Container>
       <Tag
         color={color}
         outlined={outlined}
@@ -26,24 +23,26 @@ export default ({ color, name, outlined, dense, children, ...rest }) => {
       </Tag>
       {focus && children[0] && <Line />}
       <Childrens>
-        {focus && children[0] && (
-          <>
-            {children.map(
-              ({ name, color, dense, outlined, children }, index) => {
-                return (
-                  <TagBlock
-                    key={index}
-                    color={color}
-                    name={name}
-                    dense={dense}
-                    outlined={outlined}
-                    children={children}
-                  />
-                );
-              },
-            )}
-          </>
-        )}
+        <div>
+          {focus && children[0] && (
+            <>
+              {children.map(
+                ({ name, color, dense, outlined, children }, index) => {
+                  return (
+                    <TagBlock
+                      key={index}
+                      color={color}
+                      name={name}
+                      dense={dense}
+                      outlined={outlined}
+                      children={children}
+                    />
+                  );
+                },
+              )}
+            </>
+          )}
+        </div>
       </Childrens>
     </Container>
   );

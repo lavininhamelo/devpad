@@ -2,30 +2,38 @@ import React from 'react';
 import { Nav } from './style.js';
 import Logo from './assets/Logo.png';
 import ButtonIcon from '../ButtonIcon/index';
-import { faAddressBook } from '@fortawesome/free-solid-svg-icons';
-import { Link,Redirect} from 'react-router-dom';
+import { faPlus, faSave, faPen } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
-export default ({history, name }) => {
+export default ({ history, name, icon, to }) => {
+  const iconType = (value) => {
+    if (value === 'save') {
+      return faSave;
+    } else if (value === 'edit') {
+      return faPen;
+    } else return faPlus;
+  };
+
   return (
     <>
       <Nav>
-       <Link to="/"> <img src={Logo} alt="Logo DevPad" /></Link>
+        <Link className="lateral" to="/">
+          {' '}
+          <img src={Logo} alt="Logo DevPad" />
+        </Link>
         <div className="external">
           <div className="space"></div>
           <div className="spacefinal"></div>
-          <span className="header-name"> {name || 'Sem nome'}</span>
+           
+          <span className="header-name">{name || 'Sem nome'}</span>
         </div>
-        <Link to="/criar"> 
-        <ButtonIcon
-          name="Adicionar Anotação"
-          icon={faAddressBook}
-          onClick={() => {
-          
-
-          }}
-        />
+        <Link className="lateral" to={to}>
+          <ButtonIcon
+            name="Adicionar"
+            icon={iconType(icon)}
+            onClick={() => {}}
+          />
         </Link>
-      
       </Nav>
     </>
   );

@@ -8,7 +8,7 @@ import DialogAlert, { options } from '../DialogAlert';
 import ColorPicker from '../ColorPicker';
 import Tag from '../Tag';
 
-import {TAGS} from '../../fakeData/tags'
+import {TAGS} from '../../fakeData/index'
 export default ({onTagIsClicked},props) => {
   const [availableTags, setAvailableTags] = React.useState([]);
   const [colorPicker, setColorPicker] = React.useState('#000');

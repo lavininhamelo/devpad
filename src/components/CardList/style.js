@@ -5,7 +5,6 @@ export const CardList = styled.div`
   flex-wrap: wrap;
   width: 100%;
   margin-top: 50px;
-  height: 100%;
   align-items: initial;
   justify-content: flex-start;
 `;

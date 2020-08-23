@@ -23,14 +23,14 @@ const Opts = [
     name: 'Texto',
     color: '#557DAC',
     outlined: true,
-    children: [child],
+    children: [child, child],
   },
   {
     key: 2,
     name: 'Arquivo',
     color: '#557DAC',
     outlined: true,
-    children: [child],
+    children: [child, child],
   },
   {
     key: 3,
@@ -58,7 +58,7 @@ export default () => {
   return (
     <Container
       onMouseEnter={() => setFocus(true)}
-      onMouseLeave={() => setFocus(false)}
+      onMouseLeave={() => setFocus(true)}
     >
       <LineAction>
         <hr />

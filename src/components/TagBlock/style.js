@@ -4,12 +4,17 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 `;
 
 export const Childrens = styled.div`
   display: flex;
-  flex-direction: row;
+  justify-content: flex-start;
+  /* max-width: 50px; */
+  div {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 export const Line = styled.div`

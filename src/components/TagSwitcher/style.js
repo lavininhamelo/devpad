@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../styles/GlobalStyles';
+import { PRIMARY_COLOR } from '../../styles/GlobalStyles';
 
 export const TagSwitcher = styled.div`
   display: flex;

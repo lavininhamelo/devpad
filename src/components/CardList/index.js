@@ -8,6 +8,7 @@ export default ({ cards }) => {
         cards.map(({ title, tags }, index) => {
           return <Card key={index} title={title} tags={tags} />;
         })}
+      
     </CardList>
   );
 };

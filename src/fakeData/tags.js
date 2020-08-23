@@ -19,7 +19,7 @@ export const TAGS = {
     {
       name: 'React',
       color: 'purple',
-       selected:true,
+      selected:false,
     },
     {
       name: 'Node',
