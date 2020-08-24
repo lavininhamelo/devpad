@@ -7,7 +7,7 @@ import { Container } from './style';
 function Seach() {
   return (
     <Container>
-      <input type="text" name="search" placeholder="Seach..." />
+      <input type="text" name="search" placeholder="Search..." />
       {/* <FontAwesomeIcon icon={faUniversity} size={20} /> */}
       <FontAwesomeIcon icon="coffee" />
     </Container>
