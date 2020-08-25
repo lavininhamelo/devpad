@@ -11,13 +11,18 @@ import {
 
 import DialogAlert, { options } from '../../components/DialogAlert';
 import TagSwitcher from '../../components/TagSwitcher';
-// import Dante from 'Dante2';
+import Dante from 'Dante2';
 import { toast } from 'react-toastify';
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
+import {Creators as CardsActions } from '../../store/ducks/cards'
+
 import Tag from '../../components/Tag';
 
-function CreateNote() {
+function CreateNote({add}) {
   const [type, setType] = useState(false);
   const [inputURL, setInputURL] = useState('');
+  const [titleCard, setTitleCard] = useState('');
   const [tagsSelected, setTagsSelected] = useState([]);
   const [isVisibleTag, setIsVisibleTag] = useState(false);
 
@@ -44,7 +49,6 @@ function CreateNote() {
   function submitNote() {
     if (!type) {
       if (validateUrl(inputURL)) {
-        //REQUEST ENVIAR NOTA
       } else {
         toast.error('Você informou uma url inválida.', options);
       }
@@ -78,6 +82,8 @@ function CreateNote() {
 
         <TitleInput>
           <input
+          value={titleCard}
+          onChange={({target})=>setTitleCard(target.value)}
             placeholder={
               type
                 ? 'Enter the name of your redirect'
@@ -117,10 +123,21 @@ function CreateNote() {
             )}
           </>
         ) : (
-          <></>
+          <>
+            <Dante
+              data_storage={{
+                save_handler: (context, content) => {
+                  console.log(content);
+                },
+              }}
+            ></Dante>
+          </>
         )}
       </Container>
     </>
   );
 }
-export default CreateNote;
+const mapDispatchToProps = dispatch=>{
+  bindActionCreators(CardsActions,dispatch)
+}
+export default connect(null,mapDispatchToProps)(CreateNote)

@@ -5,16 +5,25 @@ import {tags_filter, cards} from "../../fakeData/index"
 import TagList from '../../components/TagList';
 import CardList from '../../components/CardList';
 import Seach from '../../components/Search/index';
+import { useSelector } from 'react-redux';
 
-export default () => {
+
+export const Home = () => {
+
+
+const filtered = useSelector(state => state.cardsReducer.filtered);
+const tags = useSelector(state => state.tagsReducer.tags);
+
   return (
     <Container>
       <Seach />
-      <TagList tags={tags_filter} />
+      <TagList clickable tags={tags} outlined/>
       <CardList
-        cards={cards}
+        cards={filtered}
       ></CardList>
    
     </Container>
   );
 };
+
+export default Home;

@@ -20,10 +20,10 @@ export default ({ title, tags }) => {
   }
   return (
     <div className="items">
-      <Card gradient={returnNewGradient}>
+      <Card>
         <h2>{title}</h2>
         <div className="tags">
-          <TagList tags={tags} />
+          <TagList tags={tags}  dense />
         </div>
       </Card>
     </div>

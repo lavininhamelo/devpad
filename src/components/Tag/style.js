@@ -30,9 +30,19 @@ export const Container = styled.div`
       return  props.outlined ?  'white' : props.color
     }
   }};
+
+  
+
   :hover {
     cursor: pointer;
-    color: ${(props) => (props.outlined ? 'white' : props.color)};
-    background: ${(props) => (props.outlined ? props.color : 'white')};
+    color: ${(props)=>{
+    if(props.clickable){
+      return props.outlined ? 'white' : props.color;
+    }}};
+    
+    background:  ${(props)=>{
+    if(props.clickable){
+    return props.outlined ? props.color : 'white';
+     }}};
   }
 `;

@@ -34,11 +34,10 @@ export const TitleInput = styled.div`
  
   margin-top: 12px;
   width:auto;
-  border:1px solid red;
   
   input {
     font-size: 32px;
-   border:1px solid blue;
+  
     border-radius:30px;
     border-bottom-left-radius:0;
     border-top-left-radius:0;

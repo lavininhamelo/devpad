@@ -4,20 +4,25 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { toast } from 'react-toastify';
 
+import {useDispatch,useSelector} from 'react-redux'
 import DialogAlert, { options } from '../DialogAlert';
 import ColorPicker from '../ColorPicker';
 import Tag from '../Tag';
+import {Creators as TagActions} from '../../store/ducks/tags'
 
-import {TAGS} from '../../fakeData/index'
+
+
+
+ 
 export default ({onTagIsClicked},props) => {
-  const [availableTags, setAvailableTags] = React.useState([]);
+  const availableTags = useSelector(state =>state.tagsReducer.tags);
   const [colorPicker, setColorPicker] = React.useState('#000');
   const [isColorPickerActive, setIsColorPickerActive] = React.useState(false);
-  const [tagInput, setTagInput] = React.useState();
-
-
+  const [tagInput, setTagInput] = React.useState('');
+  const dispatch = useDispatch()
+  
   React.useEffect(()=>{
-    setAvailableTags(TAGS.avalaibleTags)
+    // setAvailableTags(TAGS.avalaibleTags)
   },[])
 
   function toggleTagSelected(tagName){
@@ -27,13 +32,14 @@ export default ({onTagIsClicked},props) => {
       }
       return item
     })
-    setAvailableTags(changed)
+    // setAvailableTags(changed)
   }
   
 
 
 
   function createNewTag(tagName) {
+    console.log(availableTags)
     let isExists = availableTags.some((value) => tagName.toLowerCase() === value.name.toLowerCase());
     if (isExists) {
       return toast.error(`Já existe uma tag: ${tagName}`, options);
@@ -41,8 +47,8 @@ export default ({onTagIsClicked},props) => {
     if (!tagName || tagName.trim() === '') {
       return toast.error(`Por favor, informe um nome válido.`, options);
     }
-
-    availableTags.push({ name: tagName, color: colorPicker });
+    dispatch(TagActions.add({id:availableTags.length+1,name: tagName, color: colorPicker }))
+    
     setTagInput('');
 
     return toast.success('Tag criada com sucesso.');
