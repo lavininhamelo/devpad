@@ -1,81 +1,65 @@
-import React, {useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { TagFilter } from './style';
-import {Creators} from '../../store/ducks/cards'
+import { Creators as SearchStore } from '../../store/ducks/search';
 import Tag from '../Tag/index';
 
 export default () => {
-
   const [selectedTags, setSelectedTags] = useState([]);
-  const cards = useSelector(state => state.cardsReducer.cards);
-  const filtered = useSelector(state => state.cardsReducer.filtered);
-  const tags = useSelector(state => state.tagsReducer.tags);
+  const query = useSelector((state) => state.searchReducer.searchValue);
+  const sTags = useSelector((state) => state.searchReducer.selectedTags);
+  const cards = useSelector((state) => state.cardsReducer.cards);
+  const tags = useSelector((state) => state.tagsReducer.tags);
   const dispatch = useDispatch();
 
-  function getList() {
-    return filtered[0] ? filtered : cards;
-  }
-
-  function setTags(){
+  function setTags() {
     const copyArray = [...tags];
     setSelectedTags(copyArray);
   }
 
-  function handleTag(tag){
-    const index = selectedTags.findIndex(function(el) { return (el.id === tag.id)  });
-    if(index > -1) {
-      if(!tag.selected){
-       let copyArray = [...selectedTags]; // copying the old datas array
-       copyArray[index].selected = true;
-       setSelectedTags(copyArray);
+  function handleTag(tag) {
+    const index = selectedTags.findIndex(function (el) {
+      return el.id === tag.id;
+    });
+    if (index > -1) {
+      if (!tag.selected) {
+        let copyArray = [...selectedTags]; // copying the old datas array
+        copyArray[index].selected = true;
+        setSelectedTags(copyArray);
       } else {
         let copyArray = [...selectedTags]; // copying the old datas array
         copyArray[index].selected = false;
         setSelectedTags(copyArray);
       }
     }
-  
-  };
-
-  function findByTag(card,tags){
-    let count = 0;
-    for(let tag of tags){
-        for(let c of card.tags){
-          if(c.name == tag.name){
-            count++;
-          }
-        } 
-    }
-
-    if(count === tags.length) {
-      return card;
-    } 
   }
 
   useEffect(() => {
     tags.map((item) => {
-        item.selected = false;
-        return item;
-      });
-     
+      item.selected = false;
+      return item;
+    });
+
     setTags();
-  },[])
+  }, []);
 
   useEffect(() => {
-    const filterTags = selectedTags.filter(function(el) { return (el.selected === true)  });
-    if(filterTags[0]){
-      const visibleCards = cards.filter(card => findByTag(card,filterTags))
-      dispatch(Creators.filter(visibleCards));
-    } else dispatch(Creators.filter(getList()));
+    console.log(query);
+    console.log(sTags);
+    const filterTags = selectedTags.filter(function (el) {
+      return el.selected === true;
+    });
+    dispatch(
+      SearchStore.setTags(filterTags),
+      SearchStore.filter(query, cards, sTags),
+    );
   }, [selectedTags]);
-
-
-
 
   return (
     <TagFilter>
       {selectedTags[0] &&
-        selectedTags.map(tag => {
+        selectedTags.map((tag) => {
           return (
             <Tag
               key={tag.id}

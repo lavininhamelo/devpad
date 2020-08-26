@@ -1,71 +1,90 @@
 export const Types = {
-  FILTER_CARD: 'cards/FILTER_CARDS',
-  SELECTED_TAGS: 'cards/SELECTED_TAGS',
-  SEARCH_VALUE: 'cards/SEARCH_VALUE',
+  FILTER_CARD: 'search/FILTER_CARDS',
+  SELECTED_TAGS: 'search/SELECTED_TAGS',
+  SEARCH_VALUE: 'search/SEARCH_VALUE',
 };
 
 const INITIAL_STATE = {
   filtered: [],
   selectedTags: [],
-  searchValue: ''
+  searchValue: ' ',
 };
 
-export default function cards(state = INITIAL_STATE, action) {
+export default function search(state = INITIAL_STATE, action) {
   switch (action.type) {
-      case Types.FILTER_CARD:
+    case Types.FILTER_CARD:
+      console.log(1);
       return {
         ...state,
-        filtered: action.filtered
+        filtered: action.filtered,
       };
-      case Types.SELECTED_TAGS:
+    case Types.SELECTED_TAGS:
       return {
         ...state,
-        filtered: action.tags
+        selectedTags: action.tags,
       };
-      case Types.SEARCH_VALUE:
+    case Types.SEARCH_VALUE:
       return {
         ...state,
-        filtered: action.query
+        searchValue: action.payload,
       };
     default:
       return state;
   }
 }
 
-function filterCard(query,card,tags){
+// cards.filter(function (card) {
+//   let count = 0;
+//   let value = card.title;
+//   for (let t of tags) {
+//     for (let c of card.tags) {
+//       if (c.name === t.name) {
+//         count++;
+//       }
+//     }
+//   }
+//   if (count === tags.length) {
+//     console.log('value', value);
+//     if (value.indexOf(query) > -1) {
+//       console.log('value2', value);
+//       return card;
+//     }
+//   }
+
+//   return [];
+// })
+
+function filterCard(query, card, tags) {
   let count = 0;
-  let value = card.name;
-  for(let t of tags){
-      for(let c of card.tags){
-        if(c.name == t){
-          count++;
-        }
-      } 
+  let value = card.title;
+  for (let t of tags) {
+    for (let c of card.tags) {
+      if (c.name === t.name) {
+        count++;
+      }
+    }
   }
-  if(count === tags.length) {
-    if(value.indexOf(query) > -1) {
+  if (count === tags.length) {
+    console.log('value', value);
+    if (value.indexOf(query) > -1) {
+      console.log('value2', value);
       return card;
     }
-  } 
+  }
 }
 
 export const Creators = {
-  filter: (query,cards,tags) => {
-    let filtered = [];
-    filtered = cards.filter(card => filterCard(query,card,tags))
-    return {
-      type: Types.FILTER_CARD,
-      filtered
-    }
-  },
-  setTags: (tags)=>(
-    {
-      type: Types.SEARCH_CARD,
-      tags
+  filter: (query, cards, tags) => ({
+    type: Types.FILTER_CARD,
+    filtered: cards,
   }),
-  setQuery: (querys)=>(
-    {
-      type: Types.SEARCH_CARD,
-      querys
-  })
-}
+
+  setTags: (tags) => ({
+    type: Types.SELECTED_TAGS,
+    tags,
+  }),
+  setQuery: (querys) => ({
+    type: Types.SEARCH_VALUE,
+    payload: querys,
+  }),
+};

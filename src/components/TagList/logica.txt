@@ -1,0 +1,85 @@
+filtro1 = ['JAVASCRIPT']
+filtro2 = ['HTML']
+filtro3 = ['HTML','CSS']
+filtro4 = ['HTML','CSS','JAVASCRIPT']
+
+cards = [
+  {
+      id: 1,
+      title: 'Como criar um layout',
+      tags: [{
+        id: 1,
+        name: "CSS",
+        color: "blue",
+        outlined:true,
+        dense:true
+      },
+      {
+        id: 2,
+        name: "HTML",
+        color: "orange",
+        outlined:true,
+        dense:true
+      },
+      {
+        id: 3,
+        name: "JAVASCRIPT",
+        color: "yellow",
+        outlined:true,
+        dense:true
+      }],
+    },{
+      id: 1,
+      title: 'Como criar um layout',
+      tags: [{
+        id: 1,
+        name: "CSS",
+        color: "blue",
+        outlined:true,
+        dense:true
+      },
+      {
+        id: 2,
+        name: "HTML",
+        color: "orange",
+        outlined:true,
+        dense:true
+      }
+     ],
+    },
+{
+      id: 1,
+      title: 'Como criar um layout',
+      tags: [{
+        id: 1,
+        name: "CSS",
+        color: "blue",
+        outlined:true,
+        dense:true
+      }
+   ],
+    },
+
+]
+
+
+
+const result = cards.filter(card => findByTag(card,filtro1))
+
+
+function filterCards(value,card,tags){
+  let count = 0;
+  let value = card.name;
+  for(t of tags){
+      for(c of card.tags){
+        if(c.name == t){
+          count++;
+        }
+      } 
+  }
+  if(count === tags.length) {
+    if(value.indexOf(query) > -1) {
+      return card;
+    }
+  } 
+}p

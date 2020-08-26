@@ -7,38 +7,38 @@ const INITIAL_STATE = {
   tags: [
     {
       id: 1,
-      name: "CSS",
-      color: "blue"
+      name: 'CSS',
+      color: 'blue',
     },
     {
       id: 2,
-      name: "HTML",
-      color: "orange"
+      name: 'HTML',
+      color: 'orange',
     },
     {
       id: 3,
-      name: "JAVASCRIPT",
-      color: "yellow"
+      name: 'JAVASCRIPT',
+      color: 'yellow',
     },
     {
       id: 4,
-      name: "VUE",
-      color: "limegreen"
+      name: 'VUE',
+      color: 'limegreen',
     },
     {
       id: 5,
-      name: "REACT",
-      color: "cyan"
-    }
+      name: 'REACT',
+      color: 'cyan',
+    },
   ],
 };
 
 export default function tags(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.ADD:
-      const {name,id,color} = action.payload
-      let oldValues = {...state}
-      oldValues.tags.push({id,name,color})
+      const { name, id, color } = action.payload;
+      let oldValues = { ...state };
+      oldValues.tags.push({ id, name, color });
 
       return oldValues;
     case Types.DELETE:
@@ -49,13 +49,12 @@ export default function tags(state = INITIAL_STATE, action) {
 }
 
 export const Creators = {
-  add: ({id,name,color}) => ({
+  add: ({ id, name, color }) => ({
     type: Types.ADD,
-    payload: {id,name,color},
+    payload: { id, name, color },
   }),
   remove: (id) => ({
     type: Types.DELETE,
     id,
   }),
-
 };
