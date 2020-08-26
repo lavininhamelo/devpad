@@ -117,6 +117,6 @@ export const AddTagContainer = styled.div`
   width:100%;
   color: #e5e5e5;
   width:100%;
-  
+  flex-wrap:wrap;
   height:auto;
 `;

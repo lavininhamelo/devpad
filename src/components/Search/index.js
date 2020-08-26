@@ -1,6 +1,7 @@
 import React, {useState, useEffect}  from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import {Creators} from '../../store/ducks/cards'
+import {Creators as CardStore} from '../../store/ducks/cards'
+import {Creators as earchStore} from '../../store/ducks/search'
 
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,16 +9,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Container } from './style';
 
 function Seach() {
-  const cards = useSelector(state => state.cardsReducer.cards);
+  const query = useSelector(state => state.cardsReducer.query);
+  const tags = useSelector(state => state.cardsReducer.query);
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
-  function findName (value, query) {
-    if(value.indexOf(query) > -1) return value;
-  }
+  
+
 
   useEffect(() => {
-    const visibleCards = cards.filter(item => findName(item.title.toUpperCase(),search.toUpperCase()))
-    dispatch(Creators.filter(visibleCards));
+    // dispatchSearchStores.setQuery(search);
   }, [search]);
 
 

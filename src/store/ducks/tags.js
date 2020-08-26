@@ -23,12 +23,12 @@ const INITIAL_STATE = {
     {
       id: 4,
       name: "VUE",
-      color: "green"
+      color: "limegreen"
     },
     {
       id: 5,
       name: "REACT",
-      color: "lightblue"
+      color: "cyan"
     }
   ],
 };
@@ -39,6 +39,7 @@ export default function tags(state = INITIAL_STATE, action) {
       const {name,id,color} = action.payload
       let oldValues = {...state}
       oldValues.tags.push({id,name,color})
+
       return oldValues;
     case Types.DELETE:
       return state;

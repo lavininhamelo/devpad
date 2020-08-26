@@ -4,51 +4,35 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { toast } from 'react-toastify';
 
-import {useDispatch,useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 import DialogAlert, { options } from '../DialogAlert';
 import ColorPicker from '../ColorPicker';
 import Tag from '../Tag';
-import {Creators as TagActions} from '../../store/ducks/tags'
 
-
-
-
- 
-export default ({onTagIsClicked},props) => {
-  const availableTags = useSelector(state =>state.tagsReducer.tags);
+export default (
+  { onTagCreated, onTagIsClicked, tagsAlreadySelected },
+  props,
+) => {
   const [colorPicker, setColorPicker] = React.useState('#000');
   const [isColorPickerActive, setIsColorPickerActive] = React.useState(false);
   const [tagInput, setTagInput] = React.useState('');
-  const dispatch = useDispatch()
   
-  React.useEffect(()=>{
-    // setAvailableTags(TAGS.avalaibleTags)
-  },[])
-
-  function toggleTagSelected(tagName){
-    let changed = availableTags.map((item)=>{
-      if(item.name === tagName){
-        item.selected = !item.selected;
-      }
-      return item
-    })
-    // setAvailableTags(changed)
-  }
-  
-
-
-
   function createNewTag(tagName) {
-    console.log(availableTags)
-    let isExists = availableTags.some((value) => tagName.toLowerCase() === value.name.toLowerCase());
+    let isExists = tagsAlreadySelected.some(
+      (value) => tagName.toLowerCase() === value.name.toLowerCase(),
+    );
     if (isExists) {
       return toast.error(`Já existe uma tag: ${tagName}`, options);
     }
     if (!tagName || tagName.trim() === '') {
       return toast.error(`Por favor, informe um nome válido.`, options);
     }
-    dispatch(TagActions.add({id:availableTags.length+1,name: tagName, color: colorPicker }))
-    
+    onTagCreated({
+      id: tagsAlreadySelected.length + 1,
+      name: tagName,
+      color: colorPicker,
+    });
+
     setTagInput('');
 
     return toast.success('Tag criada com sucesso.');
@@ -56,7 +40,7 @@ export default ({onTagIsClicked},props) => {
 
   return (
     <>
-      <DialogAlert/>
+      <DialogAlert />
       <TagSwitcher>
         <div className="inputExternal">
           <div className="inputContainer">
@@ -85,19 +69,30 @@ export default ({onTagIsClicked},props) => {
               setIsColorPickerActive={setIsColorPickerActive}
             />
           </div>
-          <div className="iconContainer" onClick={() => createNewTag((tagInput || ''))}>
+          <div
+            className="iconContainer"
+            onClick={() => createNewTag(tagInput || '')}
+          >
             <FontAwesomeIcon icon={faPlus} />
           </div>
         </div>
 
         <div className="tagContainer">
-          {availableTags &&
-            availableTags.map(({ name, color,selected}) => {
+          {tagsAlreadySelected &&
+            tagsAlreadySelected.map(({ name, color, selected }) => {
               return (
-                <Tag key={name} name={name} color={color} selected={selected} onClick={()=>{
-                  toggleTagSelected(name,color,selected)
-                  onTagIsClicked(name,color,selected)
-                }} outlined dense/>
+                <Tag
+                  key={name}
+                  clickable
+                  name={name}
+                  color={color}
+                  selected={selected}
+                  onClick={() => {
+                    onTagIsClicked(name, color, selected);
+                  }}
+                  outlined
+                  dense
+                />
               );
             })}
         </div>

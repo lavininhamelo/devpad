@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Card = styled.div`
+ 
   display: flex;
   position: relative;
   flex-direction: column;
@@ -61,8 +62,5 @@ export const Card = styled.div`
     top: -8px;
     cursor: pointer;
   }
-  div.items {
-    display: flex;
-    height: 500px;
-  }
+ 
 `;

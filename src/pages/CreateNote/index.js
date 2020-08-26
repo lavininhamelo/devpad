@@ -13,31 +13,59 @@ import DialogAlert, { options } from '../../components/DialogAlert';
 import TagSwitcher from '../../components/TagSwitcher';
 import Dante from 'Dante2';
 import { toast } from 'react-toastify';
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
-import {Creators as CardsActions } from '../../store/ducks/cards'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
+import { Creators as CardsActions } from '../../store/ducks/cards';
+import { useDispatch, useSelector } from 'react-redux';
 import Tag from '../../components/Tag';
+import tags, { Creators as TagActions } from '../../store/ducks/tags';
 
-function CreateNote({add}) {
+function CreateNote({ add }) {
   const [type, setType] = useState(false);
+  const allValues = useSelector((state) => state.tagsReducer.tags);
   const [inputURL, setInputURL] = useState('');
   const [titleCard, setTitleCard] = useState('');
   const [tagsSelected, setTagsSelected] = useState([]);
   const [isVisibleTag, setIsVisibleTag] = useState(false);
 
-  function handleTag(name, color, selected) {
-    if (tagsSelected.filter((item) => item.name === name).length > 0) {
-      let copy = [...tagsSelected];
-      let newArray = copy.filter((item) => item.name !== name);
-      return setTagsSelected(newArray);
-    }
+  const dispatch = useDispatch();
+React.useEffect(()=>{
+  if(tagsSelected.length === 0){
+    allValues.map(item=>{
+      item.selected = false
+      return item
+    })
+  }
+},[])
 
-    let oldValues = [...tagsSelected];
-    oldValues.push({ name, color, selected });
-    setTagsSelected(oldValues);
+  function handleTag(name, color,selected) {
+   
+    const o = allValues.map((item) => {
+      if (item.name === name) {
+       
+        item.selected = !item.selected;
+        
+      }
+      
+      return item;
+    });
+    const all = o.filter(item=>item.selected ? item : false)
+
+    setTagsSelected([...all])
+    
   }
 
+  function handleTagCreated({ name, color }) {
+   
+    dispatch(
+      TagActions.add({
+        id: allValues.length + 1,
+        name: name,
+        color: color,
+      }),
+    );
+  }
   function validateUrl() {
     if (!type) {
       return /^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?/.test(
@@ -82,8 +110,8 @@ function CreateNote({add}) {
 
         <TitleInput>
           <input
-          value={titleCard}
-          onChange={({target})=>setTitleCard(target.value)}
+            value={titleCard}
+            onChange={({ target }) => setTitleCard(target.value)}
             placeholder={
               type
                 ? 'Enter the name of your redirect'
@@ -96,13 +124,20 @@ function CreateNote({add}) {
         <AddTagContainer>
           {tagsSelected &&
             tagsSelected.map((item) => {
-              return <Tag {...item} />;
+              console.log('item',item)
+              return <Tag {...item} outlined={true}/>;
             })}
           <ButtonTag onClick={() => setIsVisibleTag(!isVisibleTag)}>
             <p>Adicionar Tag</p> <span>+</span>
           </ButtonTag>
           <div className="tag">
-            {isVisibleTag && <TagSwitcher onTagIsClicked={handleTag} />}
+            {isVisibleTag && (
+              <TagSwitcher
+                tagsAlreadySelected={allValues}
+                onTagCreated={handleTagCreated}
+                onTagIsClicked={handleTag}
+              />
+            )}
           </div>
         </AddTagContainer>
 
@@ -124,20 +159,22 @@ function CreateNote({add}) {
           </>
         ) : (
           <>
-            <Dante
-              data_storage={{
-                save_handler: (context, content) => {
-                  console.log(content);
-                },
-              }}
-            ></Dante>
+            {!isVisibleTag && (
+              <Dante
+                data_storage={{
+                  save_handler: (context, content) => {
+                    console.log(content);
+                  },
+                }}
+              ></Dante>
+            )}
           </>
         )}
       </Container>
     </>
   );
 }
-const mapDispatchToProps = dispatch=>{
-  bindActionCreators(CardsActions,dispatch)
-}
-export default connect(null,mapDispatchToProps)(CreateNote)
+const mapDispatchToProps = (dispatch) => {
+  bindActionCreators(CardsActions, dispatch);
+};
+export default connect(null, mapDispatchToProps)(CreateNote);
