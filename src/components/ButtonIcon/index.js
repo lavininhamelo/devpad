@@ -7,8 +7,11 @@ export default ({ onClick, name, icon }) => {
     <ButtonIcon onClick={onClick}>
       {name && (
         <div className="textButton">
-          <span>{name}<p>anotação</p></span>
-        </div> 
+          <span>
+            {name}
+            <p>anotação</p>
+          </span>
+        </div>
       )}
       <div className="iconButton">
         <FontAwesomeIcon icon={icon} />

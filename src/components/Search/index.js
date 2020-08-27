@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Creators as SearchStore } from '../../store/ducks/search';
@@ -8,23 +7,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { Container } from './style';
 
-function Seach() {
+function Search() {
   const query = useSelector((state) => state.searchReducer.searchValue);
+  const sTags = useSelector((state) => {
+    return state.searchReducer.selectedTags;
+  });
   const cards = useSelector((state) => state.cardsReducer.cards);
-  const tags = useSelector((state) => state.searchReducer.selectedTags);
-
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    console.log(cards);
-    console.log(query);
-    console.log(tags);
-    dispatch(
-      SearchStore.setQuery(search),
-      SearchStore.filter(query, cards, tags),
-    );
-  }, [search]);
+    dispatch(SearchStore.setQuery(search));
+    dispatch(SearchStore.filterAll({ query, cards, tags: sTags }));
+  }, [search, sTags]);
 
   return (
     <Container>
@@ -40,4 +35,4 @@ function Seach() {
   );
 }
 
-export default Seach;
+export default Search;

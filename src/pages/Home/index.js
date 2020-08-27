@@ -4,7 +4,7 @@ import { tags_filter, cards } from '../../fakeData/index';
 
 import TagFilter from '../../components/TagFilter';
 import CardList from '../../components/CardList';
-import Seach from '../../components/Search/index';
+import Search from '../../components/Search/index';
 import { useSelector } from 'react-redux';
 
 export const Home = () => {
@@ -12,10 +12,9 @@ export const Home = () => {
 
   return (
     <Container>
-      <Seach />
+      <Search />
       <TagFilter />
-      {filtered[0] ? filtered[0] : 'Nada aqui'}
-      <CardList cards={filtered}></CardList>
+      {filtered[0] ? <CardList cards={filtered}></CardList> : 'Nada aqui'}
     </Container>
   );
 };

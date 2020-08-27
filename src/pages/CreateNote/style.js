@@ -6,13 +6,16 @@ export const Container = styled.div`
   flex-direction: column;
   padding: 64px 0px;
 
-    @media(max-width: 600px) {
-          width: 70%;
-    }
+  @media (max-width: 600px) {
+    width: 70%;
+  }
 
-     @media(max-width: 415px) {
-          width: 80%;
-    }
+  @media (max-width: 415px) {
+    width: 80%;
+  }
+  .ce-block__content {
+    max-width: 100%;
+  }
 `;
 
 export const Caption = styled.div`
@@ -29,20 +32,19 @@ export const Caption = styled.div`
 
 export const TitleInput = styled.div`
   display: flex;
-  justify-content:flex-start;
- 
- 
+  justify-content: flex-start;
+
   margin-top: 12px;
-  width:auto;
-  
+  width: auto;
+
   input {
     font-size: 32px;
-  
-    border-radius:30px;
-    border-bottom-left-radius:0;
-    border-top-left-radius:0;
-    padding-right:5px;
-   width:100%;
+    height: 60px;
+    border-radius: 30px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    padding-right: 5px;
+    width: 100%;
     border: 0px;
     color: #2b2929;
     resize: none;
@@ -79,25 +81,25 @@ export const ContainerURL = styled.div`
 export const ButtonTag = styled.div`
   display: flex;
   min-width: 145px;
-  height:30px;
-  align-items:center;
-  justify-content:center;
-  margin-bottom:20px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
   border-radius: 30px;
-  justify-content:center;
+  justify-content: center;
   border: 1px solid #ccc;
   color: #ccc;
   :hover {
     cursor: pointer;
   }
 
-  p{
+  p {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 13px;
   }
 
-  span{
+  span {
     font-size: 13px;
     margin-left: 8px;
     padding: 0 4px;
@@ -106,17 +108,15 @@ export const ButtonTag = styled.div`
   }
 `;
 
-
-
 export const AddTagContainer = styled.div`
   display: flex;
-  margin-top:10px;
-  flex-direction:row;
-  justify-content:flex-start;
+  margin-top: 10px;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: flex-start;
-  width:100%;
+  width: 100%;
   color: #e5e5e5;
-  width:100%;
-  flex-wrap:wrap;
-  height:auto;
+  width: 100%;
+  flex-wrap: wrap;
+  height: auto;
 `;

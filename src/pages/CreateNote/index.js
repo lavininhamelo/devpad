@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import Switch from 'react-switch';
+import DialogAlert, { options } from '../../components/DialogAlert';
+import TagSwitcher from '../../components/TagSwitcher';
+
 import {
   Container,
   Caption,
@@ -9,17 +12,16 @@ import {
   ButtonTag,
 } from './style';
 
-import DialogAlert, { options } from '../../components/DialogAlert';
-import TagSwitcher from '../../components/TagSwitcher';
-import Dante from 'Dante2';
+//Editor Imports
+
 import { toast } from 'react-toastify';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
 import { Creators as CardsActions } from '../../store/ducks/cards';
 import { useDispatch, useSelector } from 'react-redux';
 import Tag from '../../components/Tag';
 import tags, { Creators as TagActions } from '../../store/ducks/tags';
+import Editor from '../../components/Editor';
 
 function CreateNote({ add }) {
   const [type, setType] = useState(false);
@@ -30,34 +32,29 @@ function CreateNote({ add }) {
   const [isVisibleTag, setIsVisibleTag] = useState(false);
 
   const dispatch = useDispatch();
-React.useEffect(()=>{
-  if(tagsSelected.length === 0){
-    allValues.map(item=>{
-      item.selected = false
-      return item
-    })
-  }
-},[])
+  React.useEffect(() => {
+    if (tagsSelected.length === 0) {
+      allValues.map((item) => {
+        item.selected = false;
+        return item;
+      });
+    }
+  }, []);
 
-  function handleTag(name, color,selected) {
-   
+  function handleTag(name, color, selected) {
     const o = allValues.map((item) => {
       if (item.name === name) {
-       
         item.selected = !item.selected;
-        
       }
-      
+
       return item;
     });
-    const all = o.filter(item=>item.selected ? item : false)
+    const all = o.filter((item) => (item.selected ? item : false));
 
-    setTagsSelected([...all])
-    
+    setTagsSelected([...all]);
   }
 
   function handleTagCreated({ name, color }) {
-   
     dispatch(
       TagActions.add({
         id: allValues.length + 1,
@@ -124,8 +121,8 @@ React.useEffect(()=>{
         <AddTagContainer>
           {tagsSelected &&
             tagsSelected.map((item) => {
-              console.log('item',item)
-              return <Tag {...item} outlined={true}/>;
+              console.log('item', item);
+              return <Tag {...item} outlined={true} />;
             })}
           <ButtonTag onClick={() => setIsVisibleTag(!isVisibleTag)}>
             <p>Adicionar Tag</p> <span>+</span>
@@ -158,17 +155,7 @@ React.useEffect(()=>{
             )}
           </>
         ) : (
-          <>
-            {!isVisibleTag && (
-              <Dante
-                data_storage={{
-                  save_handler: (context, content) => {
-                    console.log(content);
-                  },
-                }}
-              ></Dante>
-            )}
-          </>
+          <>{!isVisibleTag && <Editor />}</>
         )}
       </Container>
     </>

@@ -13,7 +13,6 @@ const INITIAL_STATE = {
 export default function search(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.FILTER_CARD:
-      console.log(1);
       return {
         ...state,
         filtered: action.filtered,
@@ -56,7 +55,7 @@ export default function search(state = INITIAL_STATE, action) {
 
 function filterCard(query, card, tags) {
   let count = 0;
-  let value = card.title;
+  let value = card.title.toUpperCase();
   for (let t of tags) {
     for (let c of card.tags) {
       if (c.name === t.name) {
@@ -65,26 +64,33 @@ function filterCard(query, card, tags) {
     }
   }
   if (count === tags.length) {
-    console.log('value', value);
-    if (value.indexOf(query) > -1) {
-      console.log('value2', value);
+    if (value.indexOf(query.toUpperCase()) > -1) {
       return card;
     }
   }
 }
 
 export const Creators = {
-  filter: (query, cards, tags) => ({
-    type: Types.FILTER_CARD,
-    filtered: cards,
-  }),
+  filterAll: ({ query, cards, tags }) => {
+    const final = cards.filter((card) => filterCard(query, card, tags || []));
+    console.log(final);
+    return {
+      type: Types.FILTER_CARD,
+      filtered: final,
+    };
+  },
 
-  setTags: (tags) => ({
-    type: Types.SELECTED_TAGS,
-    tags,
-  }),
-  setQuery: (querys) => ({
-    type: Types.SEARCH_VALUE,
-    payload: querys,
-  }),
+  setTags: (tags) => {
+    return {
+      type: Types.SELECTED_TAGS,
+      tags,
+    };
+  },
+  setQuery: (querys) => {
+    console.log(querys);
+    return {
+      type: Types.SEARCH_VALUE,
+      payload: querys,
+    };
+  },
 };

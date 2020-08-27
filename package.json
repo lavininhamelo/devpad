@@ -6,10 +6,10 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
+    "@stfy/react-editor.js": "^1.0.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "Dante2": "0.5.0-rc18",
     "axios": "^0.19.2",
     "crypto-md5": "^1.0.0",
     "react": "^16.13.1",
@@ -44,5 +44,27 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@bomdi/codebox": "^1.0.10",
+    "@editorjs/checklist": "^1.1.0",
+    "@editorjs/code": "^2.5.0",
+    "@editorjs/delimiter": "^1.1.0",
+    "@editorjs/embed": "^2.3.1",
+    "@editorjs/header": "^2.5.0",
+    "@editorjs/image": "^2.5.0",
+    "@editorjs/inline-code": "^1.3.1",
+    "@editorjs/link": "^2.2.1",
+    "@editorjs/list": "^1.5.0",
+    "@editorjs/marker": "^1.2.2",
+    "@editorjs/paragraph": "^2.7.0",
+    "@editorjs/quote": "^2.3.0",
+    "@editorjs/simple-image": "^1.3.3",
+    "@editorjs/underline": "^1.0.0",
+    "editorjs-drag-drop": "^0.1.1",
+    "editorjs-undo": "^0.1.4",
+    "eslint": "^6.6.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-react": "^7.20.6"
   }
 }

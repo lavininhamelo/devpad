@@ -45,16 +45,12 @@ export default () => {
   }, []);
 
   useEffect(() => {
-    console.log(query);
-    console.log(sTags);
     const filterTags = selectedTags.filter(function (el) {
       return el.selected === true;
     });
-    dispatch(
-      SearchStore.setTags(filterTags),
-      SearchStore.filter(query, cards, sTags),
-    );
-  }, [selectedTags]);
+    dispatch(SearchStore.setTags(filterTags));
+    dispatch(SearchStore.filterAll({ query, cards, sTags }));
+  }, [selectedTags, query]);
 
   return (
     <TagFilter>
