@@ -16,7 +16,7 @@ export default function tags(state = INITIAL_STATE, action) {
       oldValues.tags.push({ id, name, color });
       return oldValues;
     case Types.GET_ALL:
-      return { ...state, tags: action.payload };
+      return { tags: [...action.payload] };
     case Types.DELETE:
       return state;
     default:

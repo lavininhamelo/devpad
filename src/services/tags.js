@@ -1,4 +1,4 @@
 import axios from './axios';
 export const getAll = () => {
-  return axios.get('/').then(({ data }) => data);
+  return axios.get('/tag').then(({ data }) => data);
 };

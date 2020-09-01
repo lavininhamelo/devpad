@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Switch from 'react-switch';
 import DialogAlert, { options } from '../../components/DialogAlert';
 import TagSwitcher from '../../components/TagSwitcher';
-
+import { tagThunks } from '../../store/thunks/tags';
 import {
   Container,
   Caption,
@@ -33,6 +33,7 @@ function CreateNote({ add }) {
 
   const dispatch = useDispatch();
   React.useEffect(() => {
+    tagThunks.getAll(dispatch);
     if (tagsSelected.length === 0) {
       allValues.map((item) => {
         item.selected = false;
