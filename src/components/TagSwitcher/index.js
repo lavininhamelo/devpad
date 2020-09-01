@@ -4,21 +4,19 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { toast } from 'react-toastify';
 
-import { useDispatch, useSelector } from 'react-redux';
 import DialogAlert, { options } from '../DialogAlert';
 import ColorPicker from '../ColorPicker';
 import Tag from '../Tag';
+import { useSelector } from 'react-redux';
 
-export default (
-  { onTagCreated, onTagIsClicked, tagsAlreadySelected },
-  props,
-) => {
+export default ({ onTagCreated, onTagIsClicked }, props) => {
+  const tagsAlreadySelected = useSelector((state) => state.tagsReducer);
   const [colorPicker, setColorPicker] = React.useState('#000');
   const [isColorPickerActive, setIsColorPickerActive] = React.useState(false);
   const [tagInput, setTagInput] = React.useState('');
-  
+
   function createNewTag(tagName) {
-    let isExists = tagsAlreadySelected.some(
+    let isExists = tagsAlreadySelected.tags.some(
       (value) => tagName.toLowerCase() === value.name.toLowerCase(),
     );
     if (isExists) {
@@ -28,11 +26,9 @@ export default (
       return toast.error(`Por favor, informe um nome válido.`, options);
     }
     onTagCreated({
-      id: tagsAlreadySelected.length + 1,
       name: tagName,
       color: colorPicker,
     });
-
     setTagInput('');
 
     return toast.success('Tag criada com sucesso.');
@@ -78,8 +74,8 @@ export default (
         </div>
 
         <div className="tagContainer">
-          {tagsAlreadySelected &&
-            tagsAlreadySelected.map(({ name, color, selected }) => {
+          {tagsAlreadySelected.tags &&
+            tagsAlreadySelected.tags.map(({ name, color, selected }) => {
               return (
                 <Tag
                   key={name}

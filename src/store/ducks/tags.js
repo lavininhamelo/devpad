@@ -11,11 +11,13 @@ const INITIAL_STATE = {
 export default function tags(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.ADD:
-      const { name, id, color } = action.payload;
-      let oldValues = { ...state };
-      oldValues.tags.push({ id, name, color });
+      const { name, _id, color } = action.payload;
+      const oldValues = { ...state };
+      oldValues.tags.push({ name, _id, color, selected: false });
+      console.log('reducer ', oldValues);
       return oldValues;
     case Types.GET_ALL:
+      console.log(action);
       return { tags: [...action.payload] };
     case Types.DELETE:
       return state;
@@ -25,9 +27,9 @@ export default function tags(state = INITIAL_STATE, action) {
 }
 
 export const Creators = {
-  add: ({ id, name, color }) => ({
+  add: ({ _id, name, color }) => ({
     type: Types.ADD,
-    payload: { id, name, color },
+    payload: { _id, name, color },
   }),
   remove: (id) => ({
     type: Types.DELETE,

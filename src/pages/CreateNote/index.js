@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Switch from 'react-switch';
 import DialogAlert, { options } from '../../components/DialogAlert';
 import TagSwitcher from '../../components/TagSwitcher';
-import { tagThunks } from '../../store/thunks/tags';
+
 import {
   Container,
   Caption,
@@ -22,7 +22,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Tag from '../../components/Tag';
 import tags, { Creators as TagActions } from '../../store/ducks/tags';
 import Editor from '../../components/Editor';
-
+import { tagThunks } from '../../store/thunks/tags';
 function CreateNote({ add }) {
   const [type, setType] = useState(false);
   const allValues = useSelector((state) => state.tagsReducer.tags);
@@ -55,14 +55,10 @@ function CreateNote({ add }) {
     setTagsSelected([...all]);
   }
 
-  function handleTagCreated({ name, color }) {
-    dispatch(
-      TagActions.add({
-        id: allValues.length + 1,
-        name: name,
-        color: color,
-      }),
-    );
+  async function handleTagCreated(payload) {
+    await tagThunks.addTag(dispatch, { ...payload });
+
+    console.log('No create note', allValues);
   }
   function validateUrl() {
     if (!type) {
@@ -130,9 +126,9 @@ function CreateNote({ add }) {
           <div className="tag">
             {isVisibleTag && (
               <TagSwitcher
-                tagsAlreadySelected={allValues}
                 onTagCreated={handleTagCreated}
                 onTagIsClicked={handleTag}
+                tagsAlreadySelected={allValues}
               />
             )}
           </div>
