@@ -22,7 +22,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Tag from '../../components/Tag';
 import tags, { Creators as TagActions } from '../../store/ducks/tags';
 import Editor from '../../components/Editor';
-
+import { tagThunks } from '../../store/thunks/tags';
 function CreateNote({ add }) {
   const [type, setType] = useState(false);
   const allValues = useSelector((state) => state.tagsReducer.tags);
@@ -33,6 +33,7 @@ function CreateNote({ add }) {
 
   const dispatch = useDispatch();
   React.useEffect(() => {
+    tagThunks.getAll(dispatch);
     if (tagsSelected.length === 0) {
       allValues.map((item) => {
         item.selected = false;
@@ -54,14 +55,10 @@ function CreateNote({ add }) {
     setTagsSelected([...all]);
   }
 
-  function handleTagCreated({ name, color }) {
-    dispatch(
-      TagActions.add({
-        id: allValues.length + 1,
-        name: name,
-        color: color,
-      }),
-    );
+  async function handleTagCreated(payload) {
+    await tagThunks.addTag(dispatch, { ...payload });
+
+    console.log('No create note', allValues);
   }
   function validateUrl() {
     if (!type) {
@@ -121,7 +118,6 @@ function CreateNote({ add }) {
         <AddTagContainer>
           {tagsSelected &&
             tagsSelected.map((item) => {
-              console.log('item', item);
               return <Tag {...item} outlined={true} />;
             })}
           <ButtonTag onClick={() => setIsVisibleTag(!isVisibleTag)}>
@@ -130,9 +126,9 @@ function CreateNote({ add }) {
           <div className="tag">
             {isVisibleTag && (
               <TagSwitcher
-                tagsAlreadySelected={allValues}
                 onTagCreated={handleTagCreated}
                 onTagIsClicked={handleTag}
+                tagsAlreadySelected={allValues}
               />
             )}
           </div>

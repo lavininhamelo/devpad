@@ -73,7 +73,7 @@ function filterCard(query, card, tags) {
 export const Creators = {
   filterAll: ({ query, cards, tags }) => {
     const final = cards.filter((card) => filterCard(query, card, tags || []));
-    console.log(final);
+
     return {
       type: Types.FILTER_CARD,
       filtered: final,
@@ -87,7 +87,6 @@ export const Creators = {
     };
   },
   setQuery: (querys) => {
-    console.log(querys);
     return {
       type: Types.SEARCH_VALUE,
       payload: querys,
