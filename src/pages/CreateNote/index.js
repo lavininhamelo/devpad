@@ -121,7 +121,6 @@ function CreateNote({ add }) {
         <AddTagContainer>
           {tagsSelected &&
             tagsSelected.map((item) => {
-              console.log('item', item);
               return <Tag {...item} outlined={true} />;
             })}
           <ButtonTag onClick={() => setIsVisibleTag(!isVisibleTag)}>
