@@ -77,6 +77,9 @@ function CreateNote({ add }) {
     }
   }
 
+  function handleCloseButton() {
+    return setIsVisibleTag(!isVisibleTag);
+  }
   return (
     <>
       <DialogAlert />
@@ -111,7 +114,7 @@ function CreateNote({ add }) {
                 ? 'Enter the name of your redirect'
                 : 'Enter the name of your note...'
             }
-            maxlength="150"
+            maxLength="70"
           />
         </TitleInput>
 
@@ -129,6 +132,7 @@ function CreateNote({ add }) {
                 onTagCreated={handleTagCreated}
                 onTagIsClicked={handleTag}
                 tagsAlreadySelected={allValues}
+                onCloseButton={handleCloseButton}
               />
             )}
           </div>
@@ -157,7 +161,4 @@ function CreateNote({ add }) {
     </>
   );
 }
-const mapDispatchToProps = (dispatch) => {
-  bindActionCreators(CardsActions, dispatch);
-};
-export default connect(null, mapDispatchToProps)(CreateNote);
+export default CreateNote;
