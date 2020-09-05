@@ -13,7 +13,6 @@ export const tagThunks = {
     addTag({ ...payload }).then((response) => {
       const { name, color, _id } = response.data;
 
-      console.log('id no thunks', response.data);
       dispatch(Creators.add({ _id, name, color }));
     });
   },

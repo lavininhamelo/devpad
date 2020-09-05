@@ -20,7 +20,6 @@ export default function tags(state = INITIAL_STATE, action) {
     case Types.SET_LOADING:
       return { ...state, loading: action.payload };
     case Types.GET_ALL:
-      console.log(action);
       return { tags: [...action.payload] };
     case Types.DELETE:
       return state;

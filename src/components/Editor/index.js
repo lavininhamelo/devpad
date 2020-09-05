@@ -8,7 +8,7 @@ import Delimiter from '@editorjs/delimiter';
 import Paragraph from '@editorjs/paragraph';
 import Editor from '@stfy/react-editor.js';
 import Header from '@editorjs/header';
-import Image from '@editorjs/image';
+// import Image from '@editorjs/image';
 import List from '@editorjs/list';
 import Checklist from '@editorjs/checklist';
 import Embed from '@editorjs/embed';

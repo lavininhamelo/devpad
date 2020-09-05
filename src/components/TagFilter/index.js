@@ -9,7 +9,7 @@ export default () => {
   const [selectedTags, setSelectedTags] = useState([]);
   const query = useSelector((state) => state.searchReducer.searchValue);
   const sTags = useSelector((state) => state.searchReducer.selectedTags);
-  const cards = useSelector((state) => state.cardsReducer.cards);
+  const cards = useSelector((state) => state.notesReducer.cards);
   const tags = useSelector((state) => state.tagsReducer.tags);
   const dispatch = useDispatch();
 
@@ -20,7 +20,7 @@ export default () => {
 
   function handleTag(tag) {
     const index = selectedTags.findIndex(function (el) {
-      return el.id === tag.id;
+      return el._id === tag._id;
     });
     if (index > -1) {
       if (!tag.selected) {
@@ -42,7 +42,7 @@ export default () => {
     });
 
     setTags();
-  }, []);
+  }, [tags]);
 
   useEffect(() => {
     const filterTags = selectedTags.filter(function (el) {
@@ -58,7 +58,7 @@ export default () => {
         selectedTags.map((tag) => {
           return (
             <Tag
-              key={tag.id}
+              key={tag._id}
               color={tag.color}
               name={tag.name}
               selected={tag.selected}

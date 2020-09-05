@@ -15,12 +15,8 @@ import {
 //Editor Imports
 
 import { toast } from 'react-toastify';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { Creators as CardsActions } from '../../store/ducks/cards';
 import { useDispatch, useSelector } from 'react-redux';
 import Tag from '../../components/Tag';
-import tags, { Creators as TagActions } from '../../store/ducks/tags';
 import Editor from '../../components/Editor';
 import { tagThunks } from '../../store/thunks/tags';
 function CreateNote({ add }) {

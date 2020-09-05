@@ -1,85 +1,39 @@
 export const Types = {
   SEARCH_CARD: 'cards/SEARCH_CARD',
+  SET_CARDS: 'cards/SET_CARDS',
 };
 
 const INITIAL_STATE = {
-  cards: [
-    {
-      id: 1,
-      title: 'Como criar um layout',
-      tags: [{
-        id: 1,
-        name: "CSS",
-        color: "blue",
-        outlined:true,
-        dense:true
-      },
-      {
-        id: 2,
-        name: "HTML",
-        color: "orange",
-        outlined:true,
-        dense:true
-      },
-      {
-        id: 3,
-        name: "JAVASCRIPT",
-        color: "yellow",
-        outlined:true,
-        dense:true
-      },],
-    },
-    {
-      id: 2,
-      title: 'Como criar um servidor de minecraft para hackear os amigos',
-      tags: [ 
-        {
-        id: 1,
-        name: "CSS",
-        color: "blue",
-        outlined:true,
-        dense:true
-      },
-      {
-        id: 2,
-        name: "HTML",
-        color: "orange",
-        outlined:true,
-        dense:true
-      },],
-    },
-    {
-      id: 3,
-      title:
-        'Como trollar seu amigo colocando um cavalo de troia no computador dele',
-      tags: [ {
-        id: 3,
-        name: "JAVASCRIPT",
-        color: "yellow",
-        outlined:true,
-        dense:true
-      }],
-    },
-  ],
+  cards: [],
   filtered: [],
 };
 
 export default function cards(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case Types.SET_CARDS:
+      return { cards: [...action.payload] };
     case Types.SEARCH_CARD:
       return {
         ...state,
-        filtered: action.card
-      }
+        filtered: action.card,
+      };
+
     default:
       return state;
   }
 }
 
 export const Creators = {
-  filter: (card)=>(
-    {
+  filter: (card) => {
+    return {
       type: Types.SEARCH_CARD,
-      card
-  })
-}
+      card,
+    };
+  },
+  setCards: (cards) => {
+    return {
+      type: Types.SET_CARDS,
+      payload: cards,
+    };
+  },
+};
