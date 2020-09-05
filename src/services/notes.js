@@ -14,9 +14,9 @@ export const create = ({ title, tags, isRedirect, url, content }) => {
 };
 
 export const update = (id, newData) => {
-  return axios.put('/note/' + id, newData).then((data) => data);
+  return axios.put('/note/' + id, newData).then((response) => response.data);
 };
 
 export const remove = (id) => {
-  return axios.delete('/notes/' + id).then((response) => response.data);
+  return axios.delete('/note/' + id).then((response) => response.data);
 };
