@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Container } from './style.js';
-import { tags_filter, cards } from '../../fakeData/index';
 import { tagThunks } from '../../store/thunks/tags';
 import { useSelector, useDispatch } from 'react-redux';
 import { noteThunks } from '../../store/thunks/notes';

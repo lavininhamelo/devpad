@@ -1,5 +1,5 @@
 import React from 'react';
-import { TagSwitcher, Close } from './style';
+import { TagSwitcher } from './style';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { toast } from 'react-toastify';

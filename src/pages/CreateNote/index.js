@@ -102,7 +102,7 @@ function CreateNote({ add }) {
         </Caption>
 
         <TitleInput>
-          <input
+          <textarea
             value={titleCard}
             onChange={({ target }) => setTitleCard(target.value)}
             placeholder={

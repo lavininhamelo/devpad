@@ -19,7 +19,7 @@ function Search() {
   useEffect(() => {
     dispatch(SearchStore.setQuery(search));
     dispatch(SearchStore.filterAll({ query, cards, tags: sTags }));
-  }, [search, sTags]);
+  }, [search, sTags, cards]);
 
   return (
     <Container>

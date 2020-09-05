@@ -33,21 +33,22 @@ export const Caption = styled.div`
 export const TitleInput = styled.div`
   display: flex;
   justify-content: flex-start;
-
   margin-top: 12px;
   width: auto;
 
-  input {
-    font-size: 32px;
-    height: 60px;
+  textarea {
+    font-family: Roboto, sans-serif;
+    font-size: 1.8rem;
+    height: 70px;
     border-radius: 30px;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
     padding-right: 5px;
     width: 100%;
     border: 0px;
-    color: #2b2929;
-    resize: none;
+    color: #444;
+    overflow-y: hidden;
+    resize: none
     ::placeholder {
       color: #c2c2c2;
     }
