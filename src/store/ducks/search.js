@@ -32,27 +32,6 @@ export default function search(state = INITIAL_STATE, action) {
   }
 }
 
-// cards.filter(function (card) {
-//   let count = 0;
-//   let value = card.title;
-//   for (let t of tags) {
-//     for (let c of card.tags) {
-//       if (c.name === t.name) {
-//         count++;
-//       }
-//     }
-//   }
-//   if (count === tags.length) {
-//     console.log('value', value);
-//     if (value.indexOf(query) > -1) {
-//       console.log('value2', value);
-//       return card;
-//     }
-//   }
-
-//   return [];
-// })
-
 function filterCard(query, card, tags) {
   let count = 0;
   let value = card.title.toUpperCase();
@@ -73,7 +52,6 @@ function filterCard(query, card, tags) {
 export const Creators = {
   filterAll: ({ query, cards, tags }) => {
     const final = cards.filter((card) => filterCard(query, card, tags || []));
-    console.log(final);
     return {
       type: Types.FILTER_CARD,
       filtered: final,
@@ -87,7 +65,6 @@ export const Creators = {
     };
   },
   setQuery: (querys) => {
-    console.log(querys);
     return {
       type: Types.SEARCH_VALUE,
       payload: querys,

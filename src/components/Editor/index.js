@@ -5,7 +5,7 @@ import InlineCode from '@editorjs/inline-code';
 import Underline from '@editorjs/underline';
 import Quote from '@editorjs/quote';
 import Delimiter from '@editorjs/delimiter';
-// import Paragraph from 'editorjs-paragraph-with-alignment';
+import Paragraph from '@editorjs/paragraph';
 import Editor from '@stfy/react-editor.js';
 import Header from '@editorjs/header';
 import Image from '@editorjs/image';
@@ -21,7 +21,9 @@ import { Container } from './style';
 export default () => {
   const editor = useRef(null);
   const [intervalID, setIntervalID] = React.useState();
-  const onDataReceived = (blocks) => {};
+  const onDataReceived = (data) => {
+    console.log(JSON.stringify(data));
+  };
   React.useEffect(() => () => {
     clearInterval(intervalID);
   });
@@ -33,7 +35,13 @@ export default () => {
         onData={(data) => onDataReceived(data)}
         tools={{
           Header,
-          image: Image,
+          image: {
+            class: SimpleImage,
+            inlineToolbar: true,
+            config: {
+              placeholder: 'Paste image URL',
+            },
+          },
           codeBox: {
             class: Codebox,
             config: {
@@ -52,6 +60,7 @@ export default () => {
           Quote,
           Delimiter,
           Marker,
+          Paragraph,
         }}
         onReady={() => {
           setIntervalID(
