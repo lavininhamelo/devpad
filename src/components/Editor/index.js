@@ -71,9 +71,6 @@ export default () => {
               }
             }, 2000),
           );
-
-          console.log('Start!');
-          console.log(editor);
         }}
       />
     </Container>

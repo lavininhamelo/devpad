@@ -1,7 +1,9 @@
 import React from 'react';
 import Routes from './routes';
-import {Provider} from 'react-redux'
-import store from './store/index'
+import { Provider } from 'react-redux';
+import store from './store/index';
+import { tagThunks } from './store/thunks/tags';
+import { useDispatch } from 'react-redux';
 
 // import Header from './components/Header';
 // import Footer from './components/Footer';
@@ -13,7 +15,7 @@ function App() {
       <BrowserRouter>
         <Routes />
       </BrowserRouter>
-    </Provider >
+    </Provider>
   );
 }
 
