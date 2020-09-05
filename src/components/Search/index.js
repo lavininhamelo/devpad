@@ -12,7 +12,7 @@ function Search() {
   const sTags = useSelector((state) => {
     return state.searchReducer.selectedTags;
   });
-  const cards = useSelector((state) => state.cardsReducer.cards);
+  const cards = useSelector((state) => state.notesReducer.cards);
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
 

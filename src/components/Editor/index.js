@@ -5,10 +5,9 @@ import InlineCode from '@editorjs/inline-code';
 import Underline from '@editorjs/underline';
 import Quote from '@editorjs/quote';
 import Delimiter from '@editorjs/delimiter';
-// import Paragraph from 'editorjs-paragraph-with-alignment';
 import Editor from '@stfy/react-editor.js';
 import Header from '@editorjs/header';
-import Image from '@editorjs/image';
+// import Image from '@editorjs/image';
 import List from '@editorjs/list';
 import Checklist from '@editorjs/checklist';
 import Embed from '@editorjs/embed';
@@ -33,7 +32,7 @@ export default () => {
         onData={(data) => onDataReceived(data)}
         tools={{
           Header,
-          image: Image,
+          image: SimpleImage,
           codeBox: {
             class: Codebox,
             config: {

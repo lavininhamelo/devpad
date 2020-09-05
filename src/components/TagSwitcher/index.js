@@ -17,7 +17,6 @@ export default ({ onTagCreated, onTagIsClicked, onCloseButton }, props) => {
   const [colorPicker, setColorPicker] = React.useState('#000');
   const [isColorPickerActive, setIsColorPickerActive] = React.useState(false);
   const [tagInput, setTagInput] = React.useState('');
-  console.log(isLoading);
   function createNewTag(tagName) {
     let isExists = tagsAlreadySelected.tags.some(
       (value) => tagName.toLowerCase() === value.name.toLowerCase(),
@@ -41,7 +40,6 @@ export default ({ onTagCreated, onTagIsClicked, onCloseButton }, props) => {
     <>
       <DialogAlert />
       <TagSwitcher>
-
         {!isLoading ? (
           <>
             <div className="inputExternal">
@@ -54,7 +52,6 @@ export default ({ onTagCreated, onTagIsClicked, onCloseButton }, props) => {
                     if (e.key === 'Enter') {
                       return createNewTag(tagInput);
                     }
-
 
                     setIsColorPickerActive(false);
                   }}

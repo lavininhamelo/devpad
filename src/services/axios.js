@@ -1,9 +1,7 @@
 import axios from 'axios';
 
 axios.defaults.headers['Authorization'] =
-
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNGFiNDIxNzY3Zjg0ODJmNmNjMmVkZCIsImlhdCI6MTU5OTA5MjkwMSwiZXhwIjoxNTk5MTc5MzAxfQ.xgJo1OE_50phOJ3ja8HHD5X4HtOzal2XfAQZbnBFDDQ';
-
+  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTFhY2U1NDZiYjI1OTVlYjdkN2YzOSIsImlhdCI6MTU5OTMyNTQyMCwiZXhwIjoxNTk5NDExODIwfQ.fRv7LgjDiNV9YFuB-znGON-mzuB36QXc-MglGvk0PWE';
 
 export default axios.create({
   baseURL: 'http://localhost:3333',
