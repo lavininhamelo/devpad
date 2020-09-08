@@ -14,6 +14,14 @@ export default ({ history, name, icon, to }) => {
     } else return faPlus;
   };
 
+  const nameType = (value) => {
+    if (value === 'save') {
+      return 'Salvar';
+    } else if (value === 'edit') {
+      return 'Editar';
+    } else return 'Adicionar';
+  };
+
   return (
     <>
       <Nav>
@@ -24,12 +32,12 @@ export default ({ history, name, icon, to }) => {
         <div className="external">
           <div className="space"></div>
           <div className="spacefinal"></div>
-           
+
           <span className="header-name">{name || 'Sem nome'}</span>
         </div>
         <Link className="lateral" to={to}>
           <ButtonIcon
-            name="Adicionar"
+            name={nameType(icon)}
             icon={iconType(icon)}
             onClick={() => {}}
           />

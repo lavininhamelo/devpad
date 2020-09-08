@@ -7,11 +7,11 @@ import ModalDialog from '../ModalDialog';
 import { noteThunks } from '../../store/thunks/notes';
 import md5 from 'crypto-md5';
 import { useDispatch } from 'react-redux';
-
+import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default ({ id, title, tags }) => {
+export default ({ id, title, tags, path }) => {
   const [hovered, setHovered] = React.useState(false);
   const [openedModal, setOpenedModal] = React.useState(false);
   const dispatch = useDispatch();
@@ -59,10 +59,13 @@ export default ({ id, title, tags }) => {
         style={{ marginBottom: '0px' }}
       >
         <Card gradient={() => memorizedGradient}>
-          <h2>{title}</h2>
-          <div className="tags">
-            <TagList tags={tags} dense />
-          </div>
+          <Link style={{ textDecoration: 'none' }} to={'/view/' + path}>
+            <h2>{title}</h2>
+            <div className="tags">
+              <TagList tags={tags} dense />
+            </div>
+          </Link>
+
           <ButtonsAside style={{ opacity: hovered ? 1 : 0 }}>
             <DeleteButton onClick={() => setOpenedModal(true)}>
               <FontAwesomeIcon icon={faTrash} />

@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from './pages/Home/index';
 import CreateNote from './pages/CreateNote/index';
+import ViewNote from './pages/ViewNote/index';
 import Layout from './layouts/Default/index';
 import WithoutFooter from './layouts/WithoutFooter';
 
@@ -11,17 +12,25 @@ const Routes = () => (
       exact
       path="/"
       component={() => (
-        <Layout name="Home" to="criar">
+        <Layout name="Home" to="create">
           <Home />
         </Layout>
       )}
     />
     <Route
-      path="/criar"
+      path="/create"
       component={() => (
-        <WithoutFooter name="Criar anotação" icon="save">
+        <WithoutFooter name="Criar anotação" to="/" icon="save">
           <CreateNote />
         </WithoutFooter>
+      )}
+    />
+    <Route
+      path="/view/:path"
+      component={() => (
+        <Layout name="Ver anotação" to="/edit" icon="edit">
+          <ViewNote />
+        </Layout>
       )}
     />
 

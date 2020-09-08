@@ -5,7 +5,11 @@ export const list = () => {
 };
 
 export const show = (id) => {
-  return axios.get('/notes/' + id).then((response) => response.data);
+  return axios.get('/note/' + id).then((response) => response.data);
+};
+
+export const view = (path) => {
+  return axios.get('/view/' + path).then((response) => response.data);
 };
 
 export const create = ({ title, tags, isRedirect, url, content }) => {
