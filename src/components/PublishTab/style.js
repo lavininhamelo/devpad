@@ -26,7 +26,7 @@ export const SaveButton = styled.div`
   border: 1px solid ${PRIMARY_COLOR};
   background-color: ${PRIMARY_COLOR};
   color: white;
-  border-radius: 10px;
+  border-radius: 5px;
   :hover {
     cursor: pointer;
   }
@@ -40,7 +40,7 @@ export const CancelButton = styled.div`
   height: 50px;
   border: 2px solid #ddd;
   color: #ccc;
-  border-radius: 10px;
+  border-radius: 5px;
   transition: color 200ms;
   :hover {
     cursor: pointer;
