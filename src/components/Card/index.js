@@ -8,7 +8,7 @@ import { noteThunks } from '../../store/thunks/notes';
 import md5 from 'crypto-md5';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default ({ id, title, tags, path }) => {
@@ -25,7 +25,7 @@ export default ({ id, title, tags, path }) => {
     return returnNewGradient(title);
   }, [title]);
 
-  function onClickDeleteCard() {
+  async function onClickDeleteCard() {
     noteThunks
       .remove(dispatch, id)
       .then(() => {
@@ -72,7 +72,6 @@ export default ({ id, title, tags, path }) => {
           </ButtonsAside>
         </Card>
       </div>
-      <ToastContainer />
     </>
   );
 };

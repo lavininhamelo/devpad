@@ -15,7 +15,7 @@ import {
 
 //Editor Imports
 
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import Tag from '../../components/Tag';
 import Editor from '../../components/Editor';
@@ -66,9 +66,7 @@ function CreateNote({ add }) {
   }
 
   async function handleTagCreated(payload) {
-    tagThunks.addTag(dispatch, { ...payload }).then(() => {
-      toast.success('Tag criada com sucesso.');
-    });
+    await tagThunks.addTag(dispatch, { ...payload });
 
     // console.log('No create note', allValues);
   }
@@ -92,8 +90,6 @@ function CreateNote({ add }) {
 
   return (
     <>
-      <ToastContainer />
-
       <Container>
         <Caption>
           <h2>Nova Anotação</h2>{' '}
