@@ -4,7 +4,6 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { toast } from 'react-toastify';
 
-import DialogAlert, { options } from '../DialogAlert';
 import ColorPicker from '../ColorPicker';
 import Tag from '../Tag';
 import { useSelector } from 'react-redux';
@@ -22,10 +21,10 @@ export default ({ onTagCreated, onTagIsClicked, onCloseButton }, props) => {
       (value) => tagName.toLowerCase() === value.name.toLowerCase(),
     );
     if (isExists) {
-      return toast.error(`Já existe uma tag: ${tagName}`, options);
+      return toast.error(`Já existe uma tag: ${tagName}`);
     }
     if (!tagName || tagName.trim() === '') {
-      return toast.error(`Por favor, informe um nome válido.`, options);
+      return toast.error(`Por favor, informe um nome válido.`);
     }
     onTagCreated({
       name: tagName,
@@ -37,7 +36,6 @@ export default ({ onTagCreated, onTagIsClicked, onCloseButton }, props) => {
 
   return (
     <>
-      <DialogAlert />
       <TagSwitcher>
         {!isLoading ? (
           <>

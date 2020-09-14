@@ -6,10 +6,9 @@ import { noteThunks } from '../../store/thunks/notes';
 import { useAuth } from '../../contexts/auth';
 import TagFilter from '../../components/TagFilter';
 import CardList from '../../components/CardList';
-import DialogAlert from '../../components/DialogAlert';
 import Search from '../../components/Search/index';
 import { Creators as EditorCreators } from '../../store/ducks/editor';
-
+import NoContent from '../../components/NoContent';
 export const Home = () => {
   const dispatch = useDispatch();
   const { logout } = useAuth();
@@ -26,12 +25,11 @@ export const Home = () => {
 
   return (
     <>
-      <DialogAlert />
       <Container>
         <Search />
         <button onClick={() => logout()}>Logout</button>
         <TagFilter />
-        {filtered[0] ? <CardList cards={filtered}></CardList> : 'Nada aqui'}
+        {filtered[0] ? <CardList cards={filtered}></CardList> : <NoContent />}
       </Container>
     </>
   );

@@ -1,14 +1,14 @@
 import React from 'react';
 import TagList from '../TagList';
-import { Card, ButtonsAside, DeleteButton, EditButton } from './style.js';
-import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { Card, ButtonsAside, DeleteButton } from './style.js';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ModalDialog from '../ModalDialog';
 import { noteThunks } from '../../store/thunks/notes';
 import md5 from 'crypto-md5';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default ({ id, title, tags, path }) => {
@@ -25,7 +25,7 @@ export default ({ id, title, tags, path }) => {
     return returnNewGradient(title);
   }, [title]);
 
-  function onClickDeleteCard() {
+  async function onClickDeleteCard() {
     noteThunks
       .remove(dispatch, id)
       .then(() => {
@@ -37,7 +37,6 @@ export default ({ id, title, tags, path }) => {
 
     setOpenedModal(false);
   }
-  function onClickEditCard() {}
 
   return (
     <>
@@ -45,7 +44,7 @@ export default ({ id, title, tags, path }) => {
         message={`Deseja deletar o card: ${title}`}
         icon={faTrash}
         buttons={['OK', 'Cancelar']}
-        title="Teste"
+        title="Confirmar exclusão ?"
         condition={openedModal}
         onCancel={() => {
           setOpenedModal(false);
@@ -70,13 +69,9 @@ export default ({ id, title, tags, path }) => {
             <DeleteButton onClick={() => setOpenedModal(true)}>
               <FontAwesomeIcon icon={faTrash} />
             </DeleteButton>
-            <EditButton>
-              <FontAwesomeIcon icon={faEdit} />
-            </EditButton>
           </ButtonsAside>
         </Card>
       </div>
-      <ToastContainer />
     </>
   );
 };
