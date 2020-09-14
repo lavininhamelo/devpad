@@ -1,19 +1,20 @@
 import React from 'react';
-import Routes from './routes';
-import { Provider } from 'react-redux';
+import Routes from './routes/index';
+import { Provider as ReduxProvider } from 'react-redux';
+import { AuthProvider } from './contexts/auth';
 import store from './store/index';
-
-// import Header from './components/Header';
-// import Footer from './components/Footer';
+import { useAuth } from './contexts/auth';
 import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes />
-      </BrowserRouter>
-    </Provider>
+    <ReduxProvider store={store}>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes />
+        </BrowserRouter>
+      </AuthProvider>
+    </ReduxProvider>
   );
 }
 

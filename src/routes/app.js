@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Home from './pages/Home/index';
-import CreateNote from './pages/CreateNote/index';
-import ViewNote from './pages/ViewNote/index';
-import Layout from './layouts/Default/index';
-import WithoutFooter from './layouts/WithoutFooter';
+import Home from '../pages/Home/index';
+import CreateNote from '../pages/CreateNote/index';
+import ViewNote from '../pages/ViewNote/index';
+import Layout from '../layouts/Default/index';
+import WithoutFooter from '../layouts/WithoutFooter';
 
-const Routes = () => (
+const AppRoutes = () => (
   <Switch>
     <Route
       exact
@@ -38,4 +38,4 @@ const Routes = () => (
   </Switch>
 );
 
-export default Routes;
+export default AppRoutes;
