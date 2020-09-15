@@ -6,7 +6,6 @@ const AuthRoutes = () => (
   <Switch>
     <Route exact path="/" component={() => <Login />} />
     <Route exact path="/register" component={() => <Login />} />
-
     <Route path="*" component={() => <Login />} />
   </Switch>
 );
