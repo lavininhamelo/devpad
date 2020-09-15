@@ -10,12 +10,11 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     async function loadStorageData() {
-      console.log('oi1');
       const storagedUser = localStorage.getItem('user');
       const storagedToken = localStorage.getItem('token');
       if (storagedUser && storagedToken) {
         setUser(JSON.parse(storagedUser));
-        axios.defaults.headers['Authorization'] = `Baerer ${storagedToken}`;
+        axios.defaults.headers['Authorization'] = `Bearer ${storagedToken}`;
       }
 
       setLoading(false);
@@ -26,28 +25,26 @@ const AuthProvider = ({ children }) => {
 
   async function login(email, password) {
     const response = await User.login(email, password);
-    console.log(response);
-    if (response) {
+
+    if (!response.error) {
       const { user, token } = response.data;
 
       setUser(user);
-      axios.defaults.headers.Authorization = `Baerer ${token}`;
+      axios.defaults.headers.Authorization = `Bearer ${token}`;
 
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
     }
+    return response;
   }
 
   async function register(email, username, password) {
     const response = await User.register(email, username, password);
-    if (response) {
-      console.log('Cadastro com sucesso!');
-      // Precisa fazer push para o login!
-    }
+
+    return response;
   }
 
   async function logout() {
-    console.log('logout');
     localStorage.clear();
     setUser(null);
   }

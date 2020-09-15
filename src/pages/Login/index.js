@@ -6,15 +6,35 @@ import { faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { Container, FormContainer, ImageContainer, Link } from './style';
 import Logo from '../../assets/Logo.png';
 import SVG from '../../assets/login.svg';
+import { toast } from 'react-toastify';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { login } = useAuth();
-
-  function handleLogin(e) {
+  function validateForms() {
+    if (email.trim().length === 0) {
+      return false;
+    }
+    if (password.trim().length === 0) {
+      return false;
+    }
+    return true;
+  }
+  async function handleLogin(e) {
     e.preventDefault();
-    login(email, password);
+
+    if (validateForms()) {
+      const response = await login(email, password);
+      console.log(response);
+      if (response.error) {
+        toast.error(response.error);
+      } else {
+        toast.success('Logado com sucesso!');
+      }
+    } else {
+      toast.error('Por favor, preencha os campos corretamente.');
+    }
   }
 
   return (
@@ -42,8 +62,10 @@ function Login() {
             onChange={(e) => setEmail(e.target.value)}
             icon={faEnvelope}
             placeholder="E-mail"
+            required
           />
           <Input
+            required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type="password"

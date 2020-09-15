@@ -43,12 +43,7 @@ function CreateNote({ add }) {
   }, []);
 
   //Handles
-  function handleCancelClick() {
-    console.log(editorState);
-  }
-  function handleSaveButton() {
-    console.log(editorState);
-  }
+
   function handleCloseButton() {
     return setIsVisibleTag(!isVisibleTag);
   }

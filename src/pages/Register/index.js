@@ -10,16 +10,39 @@ import {
 import { Container, FormContainer, ImageContainer, Link } from './style';
 import Logo from '../../assets/Logo.png';
 import SVG from '../../assets/register.svg';
+import { toast } from 'react-toastify';
+import { useHistory } from 'react-router-dom';
 
 function Register() {
+  const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const { register } = useAuth();
 
-  function handleRegister(e) {
+  function validateForms() {
+    if (password.trim().length === 0 || password.trim().length < 4) {
+      return false;
+    }
+    if (username.trim().length === 0 || password.trim().length < 4) {
+      return false;
+    }
+    return true;
+  }
+  async function handleRegister(e) {
     e.preventDefault();
-    register(email, username, password);
+    if (validateForms()) {
+      const response = await register(email, username, password);
+      console.log(response);
+      if (!response.error) {
+        toast.success('Registrado com sucesso!');
+        history.push('/');
+      } else {
+        toast.error(response.error);
+      }
+    } else {
+      toast.error('Por favor, confira todos os campos e tamanho!');
+    }
   }
 
   return (
@@ -36,12 +59,17 @@ function Register() {
             onChange={(e) => setEmail(e.target.value)}
             icon={faEnvelope}
             placeholder="E-mail"
+            required
           />
           <Input
             autoFocus
             type="text"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={({ target }) => {
+              if (target.value.match('^[a-zA-Z0-9]*$')) {
+                setUsername(target.value);
+              }
+            }}
             icon={faUserAlt}
             placeholder="Usuário"
           />
@@ -51,6 +79,7 @@ function Register() {
             type="password"
             placeholder="Senha"
             icon={faLock}
+            required
           />
           <Button type="submit">Criar conta</Button>
           <span>
