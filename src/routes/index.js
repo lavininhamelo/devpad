@@ -8,11 +8,9 @@ const Routes = () => {
   const { signed, loading } = useAuth();
   console.log(signed, loading);
 
-  // if (loading) {
-  //   console.log('oi1');
-
-  //   return <Loading />;
-  // }
+  if (loading) {
+    return <Loading />;
+  }
   return !signed ? <AuthRoutes /> : <AppRoutes />;
 };
 

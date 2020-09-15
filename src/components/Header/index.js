@@ -1,6 +1,6 @@
 import React from 'react';
 import { Nav } from './style.js';
-import Logo from './assets/Logo.png';
+import Logo from '../../assets/Logo.png';
 import ButtonIcon from '../ButtonIcon/index';
 import { faPlus, faSave, faPen } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';

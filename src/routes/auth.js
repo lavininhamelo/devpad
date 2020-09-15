@@ -1,28 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Login from '../pages/Login/index';
-import Layout from '../layouts/Default/index';
 
 const AuthRoutes = () => (
   <Switch>
-    <Route
-      exact
-      path="/"
-      component={() => (
-        <Layout name="Login" to="create">
-          <Login />
-        </Layout>
-      )}
-    />
+    <Route exact path="/" component={() => <Login />} />
+    <Route exact path="/register" component={() => <Login />} />
 
-    <Route
-      path="*"
-      component={() => (
-        <Layout name="Login" to="create">
-          <Login />
-        </Layout>
-      )}
-    />
+    <Route path="*" component={() => <Login />} />
   </Switch>
 );
 
