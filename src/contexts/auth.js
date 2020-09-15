@@ -38,6 +38,14 @@ const AuthProvider = ({ children }) => {
     }
   }
 
+  async function register(email, username, password) {
+    const response = await User.register(email, username, password);
+    if (response) {
+      console.log('Cadastro com sucesso!');
+      // Precisa fazer push para o login!
+    }
+  }
+
   async function logout() {
     console.log('logout');
     localStorage.clear();
@@ -46,7 +54,7 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ signed: !!user, user, loading, login, logout }}
+      value={{ signed: !!user, user, loading, login, logout, register }}
     >
       {children}
     </AuthContext.Provider>
