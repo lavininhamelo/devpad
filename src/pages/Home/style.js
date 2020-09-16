@@ -9,6 +9,7 @@ export const Container = styled.div`
   background-color: #fff;
 `;
 
+export const Logout = styled.div``;
 export const ButtonFixed = styled.div`
   position: fixed;
   z-index: 10;

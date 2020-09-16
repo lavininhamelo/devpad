@@ -20,7 +20,7 @@ const AppRoutes = () => (
     <Route
       path="/create"
       component={() => (
-        <WithoutFooter name="Criar anotação" to="/" icon="save">
+        <WithoutFooter name="Create note" to="/" icon="save">
           <CreateNote />
         </WithoutFooter>
       )}
@@ -28,7 +28,7 @@ const AppRoutes = () => (
     <Route
       path="/view/:path"
       component={() => (
-        <WithoutFooter name="Ver anotação" to="/edit" icon="edit">
+        <WithoutFooter name="View note" to="/edit" icon="edit">
           <ViewNote />
         </WithoutFooter>
       )}

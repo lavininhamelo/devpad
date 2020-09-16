@@ -26,7 +26,7 @@ function Login() {
 
     if (validateForms()) {
       const response = await login(email, password);
-      console.log(response);
+      // console.log(response);
       if (response.error) {
         toast.error(response.error);
       } else {

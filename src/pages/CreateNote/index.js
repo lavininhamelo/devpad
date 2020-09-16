@@ -76,7 +76,6 @@ function CreateNote({ add }) {
   function submitNote() {
     if (!type) {
       if (validateUrl(inputURL)) {
-        console.log(editorState);
       } else {
         toast.error('Você informou uma url inválida.');
       }
@@ -87,7 +86,7 @@ function CreateNote({ add }) {
     <>
       <Container>
         <Caption>
-          <h2>Nova Anotação</h2>{' '}
+          <h2>NEW NOTE</h2>{' '}
           <Switch
             onChange={() =>
               dispatch(
@@ -128,7 +127,7 @@ function CreateNote({ add }) {
             }
             placeholder={
               type
-                ? 'Enter the name of your redirect'
+                ? 'Enter the name of your redirect link'
                 : 'Enter the name of your note...'
             }
             maxLength="70"
@@ -172,9 +171,6 @@ function CreateNote({ add }) {
                   }
                   placeholder="Enter a url..."
                 />
-                <button type="submit" onClick={submitNote}>
-                  OK
-                </button>
               </ContainerURL>
             )}
           </>

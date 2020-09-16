@@ -48,7 +48,7 @@ const PublishTab = ({ isCreating }) => {
               history.goBack();
             }}
           >
-            Cancelar
+            Cancel
           </CancelButton>
           {!isCreating && (
             <DeleteButton
@@ -56,7 +56,7 @@ const PublishTab = ({ isCreating }) => {
                 setOpenedModal(true);
               }}
             >
-              Deletar
+              Delete
             </DeleteButton>
           )}
         </div>
@@ -82,7 +82,7 @@ const PublishTab = ({ isCreating }) => {
             }
           }}
         >
-          Salvar
+          Save
         </SaveButton>
         <></>
       </Container>

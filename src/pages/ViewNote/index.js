@@ -19,9 +19,10 @@ function ViewNote() {
     const fetchData = async () => {
       setIsLoading(true);
       const result = await Note.view(path);
-      console.log('result', result);
       dispatch(EditorCreatos.SET_NOTE({ ...result }));
-
+      if (result.isRedirect) {
+        window.location.url = result.url;
+      }
       setIsLoading(false);
     };
     fetchData();

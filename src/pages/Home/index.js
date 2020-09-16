@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Container, ButtonFixed } from './style.js';
+import { Container, ButtonFixed, Logout } from './style.js';
 import { tagThunks } from '../../store/thunks/tags';
 import { useSelector, useDispatch } from 'react-redux';
 import { noteThunks } from '../../store/thunks/notes';
@@ -31,11 +31,11 @@ export const Home = () => {
       <Container>
         <Link style={{ textDecoration: 'none' }} to="/create">
           <ButtonFixed>
-            <FontAwesomeIcon color="#fff" icon={faPlus} size={'md'} />
+            <FontAwesomeIcon color="#fff" icon={faPlus} />
           </ButtonFixed>
         </Link>
         <Search />
-        <button onClick={() => logout()}>Logout</button>
+
         <TagFilter />
         {filtered[0] ? <CardList cards={filtered}></CardList> : <NoContent />}
       </Container>
