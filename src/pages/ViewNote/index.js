@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { Container, Title } from './style';
 import * as Note from '../../services/notes';
 
@@ -11,6 +11,7 @@ import { Creators as EditorCreatos } from '../../store/ducks/editor';
 import Editor from '../../components/Editor';
 import PublishTab from '../../components/PublishTab';
 function ViewNote() {
+  const history = useHistory();
   const { path } = useParams();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +22,8 @@ function ViewNote() {
       const result = await Note.view(path);
       dispatch(EditorCreatos.SET_NOTE({ ...result }));
       if (result.isRedirect) {
-        window.location.url = result.url;
+        window.open(result.url);
+        history.goBack();
       }
       setIsLoading(false);
     };
