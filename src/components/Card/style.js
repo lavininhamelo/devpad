@@ -60,7 +60,6 @@ export const Card = styled.div`
   :hover {
     position: relative;
     top: -8px;
-    cursor: pointer;
   }
 `;
 

@@ -22,8 +22,7 @@ function ViewNote() {
       const result = await Note.view(path);
       dispatch(EditorCreatos.SET_NOTE({ ...result }));
       if (result.isRedirect) {
-        window.open(result.url);
-        history.goBack();
+        window.location.href = result.url;
       }
       setIsLoading(false);
     };

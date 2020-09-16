@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default ({ id, title, tags, path }) => {
+export default ({ isRedirect, url, id, title, tags, path }) => {
   const [hovered, setHovered] = React.useState(false);
   const [openedModal, setOpenedModal] = React.useState(false);
   const dispatch = useDispatch();
@@ -58,12 +58,26 @@ export default ({ id, title, tags, path }) => {
         style={{ marginBottom: '0px' }}
       >
         <Card gradient={() => memorizedGradient}>
-          <Link style={{ textDecoration: 'none' }} to={'/view/' + path}>
-            <h2>{title}</h2>
-            <div className="tags">
-              <TagList tags={tags} dense />
-            </div>
-          </Link>
+          {!isRedirect ? (
+            <Link style={{ textDecoration: 'none' }} to={'/view/' + path}>
+              <h2>{title}</h2>
+              <div className="tags">
+                <TagList tags={tags} dense />
+              </div>
+            </Link>
+          ) : (
+            <a
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none' }}
+              href={url}
+              target="_BLANK"
+            >
+              <h2>{title}</h2>
+              <div className="tags">
+                <TagList tags={tags} dense />
+              </div>
+            </a>
+          )}
 
           <ButtonsAside style={{ opacity: hovered ? 1 : 0 }}>
             <DeleteButton onClick={() => setOpenedModal(true)}>

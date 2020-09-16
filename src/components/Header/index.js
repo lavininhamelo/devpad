@@ -1,6 +1,6 @@
 import React from 'react';
 import { ButtonOptions, Nav, UserDiv } from './style.js';
-import Logo from '../../assets/Logo.png';
+import Logo from '../../assets/Logo.svg';
 import ButtonIcon from '../ButtonIcon/index';
 import {
   faPlus,

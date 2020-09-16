@@ -6,9 +6,17 @@ export default ({ cards }) => {
   return (
     <CardList>
       {cards &&
-        cards.map(({ _id, title, tags, path }, index) => {
+        cards.map(({ url, isRedirect, _id, title, tags, path }, index) => {
           return (
-            <Card key={_id} id={_id} title={title} tags={tags} path={path} />
+            <Card
+              key={_id}
+              url={url}
+              isRedirect={isRedirect}
+              id={_id}
+              title={title}
+              tags={tags}
+              path={path}
+            />
           );
         })}
     </CardList>

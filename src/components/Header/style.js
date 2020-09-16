@@ -41,6 +41,7 @@ export const Nav = styled.nav`
 
     img {
       width: auto;
+      max-height: 60px;
       height: 100%;
     }
   }

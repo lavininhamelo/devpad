@@ -4,7 +4,7 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { Container, FormContainer, ImageContainer, Link } from './style';
-import Logo from '../../assets/Logo.png';
+import Logo from '../../assets/Logo.svg';
 import SVG from '../../assets/login.svg';
 import { toast } from 'react-toastify';
 
@@ -19,6 +19,7 @@ function Login() {
     if (password.trim().length === 0) {
       return false;
     }
+
     return true;
   }
   async function handleLogin(e) {
