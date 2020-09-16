@@ -35,13 +35,7 @@ export default ({ history, name, icon, to }) => {
 
           <span className="header-name">{name || 'Sem nome'}</span>
         </div>
-        <Link className="lateral" to={to}>
-          <ButtonIcon
-            name={nameType(icon)}
-            icon={iconType(icon)}
-            onClick={() => {}}
-          />
-        </Link>
+        <Link className="lateral" to={to}></Link>
       </Nav>
     </>
   );

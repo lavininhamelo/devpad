@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
-import { Container } from './style.js';
+import { Container, ButtonFixed } from './style.js';
 import { tagThunks } from '../../store/thunks/tags';
 import { useSelector, useDispatch } from 'react-redux';
 import { noteThunks } from '../../store/thunks/notes';
 import { useAuth } from '../../contexts/auth';
+import { Link } from 'react-router-dom';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TagFilter from '../../components/TagFilter';
 import CardList from '../../components/CardList';
 import Search from '../../components/Search/index';
@@ -26,6 +29,11 @@ export const Home = () => {
   return (
     <>
       <Container>
+        <Link style={{ textDecoration: 'none' }} to="/create">
+          <ButtonFixed>
+            <FontAwesomeIcon color="#fff" icon={faPlus} size={'md'} />
+          </ButtonFixed>
+        </Link>
         <Search />
         <button onClick={() => logout()}>Logout</button>
         <TagFilter />
