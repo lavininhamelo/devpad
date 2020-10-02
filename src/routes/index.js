@@ -5,7 +5,7 @@ import Loading from '../components/Loading/index';
 import { useAuth } from '../contexts/auth';
 
 const Routes = () => {
-  const { signed, loading, user } = useAuth();
+  const { signed, loading } = useAuth();
   if (loading) {
     return <Loading />;
   }

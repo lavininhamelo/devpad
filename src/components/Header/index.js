@@ -1,11 +1,7 @@
 import React from 'react';
 import { ButtonOptions, Nav, UserDiv } from './style.js';
 import Logo from '../../assets/Logo.svg';
-import ButtonIcon from '../ButtonIcon/index';
 import {
-  faPlus,
-  faSave,
-  faPen,
   faUser,
   faInfo,
   faArrowDown,
@@ -17,21 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export default ({ history, name, icon, to }) => {
   const { user, logout } = useAuth();
   const [opened, setOpened] = React.useState(false);
-  const iconType = (value) => {
-    if (value === 'save') {
-      return faSave;
-    } else if (value === 'edit') {
-      return faPen;
-    } else return faPlus;
-  };
 
-  const nameType = (value) => {
-    if (value === 'save') {
-      return 'Save';
-    } else if (value === 'edit') {
-      return 'Edit';
-    } else return 'Add';
-  };
 
   return (
     <>

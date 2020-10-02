@@ -1,6 +1,5 @@
 import * as Note from '../../services/notes';
 import { Creators } from '../ducks/cards';
-import { useHistory } from 'react-router-dom';
 
 export const noteThunks = {
   list: async (dispatch) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, SaveButton, CancelButton } from './style';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { noteThunks } from '../../store/thunks/notes';
 import { toast } from 'react-toastify';

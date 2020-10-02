@@ -73,8 +73,8 @@ export default ({ isLoading }) => {
             setIntervalID(
               setTimeout(() => {
                 if (editor) {
-                  // new Undo({ ...editor.current });
-                  // new DragDrop(editor.current.editor);
+                  new Undo({ ...editor.current });
+                  new DragDrop(editor.current.editor);
                   // clearInterval(intervalID);
                 }
               }, 2000),

@@ -33,7 +33,6 @@ export const Caption = styled.div`
 export const Title = styled.h1`
   font-family: Roboto, sans-serif;
   font-size: 1.8rem;
-  height: 70px;
   padding-right: 5px;
   color: #444;
   margin-bottom: 16px;
