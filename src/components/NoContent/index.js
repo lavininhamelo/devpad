@@ -7,7 +7,7 @@ function NoContent() {
   return (
     <Container>
       <FontAwesomeIcon size="lg" icon={faFrown}></FontAwesomeIcon>
-      <h3>Sem conteúdo para mostrar...</h3>
+      <h3>No content, add new card...</h3>
     </Container>
   );
 }
