@@ -38,7 +38,7 @@ export default ({ isLoading }) => {
           ref={editor}
           data={editorState.content}
           holder="editorjs-container"
-          placeholder="Comece a escrever algo..."
+          placeholder="Start writing something..."
           onData={(data) => onDataReceived(data)}
           tools={{
             Header,

@@ -17,10 +17,10 @@ const PublishTab = ({ isCreating }) => {
     await noteThunks
       .remove(dispatch, editorState._id)
       .then(() => {
-        toast.success('Card deletado com sucesso.');
+        toast.success('Card was deleted.');
       })
       .catch((err) => {
-        toast.error('Houve um erro ao deletar o card ' + err.getMessage());
+        toast.error('Something is wrong... ' + err.getMessage());
       });
     history.goBack();
     setOpenedModal(false);
@@ -29,10 +29,10 @@ const PublishTab = ({ isCreating }) => {
   return (
     <>
       <ModalDialog
-        message={`Deseja deletar o card: ${editorState.title}`}
+        message={`Delete card: ${editorState.title} ?`}
         icon={faTrash}
-        buttons={['OK', 'Cancelar']}
-        title={'Confirmar exclusão ?'}
+        buttons={['OK', 'Cancel']}
+        title={'Confirm?'}
         condition={openedModal}
         onCancel={() => {
           setOpenedModal(false);
@@ -64,21 +64,21 @@ const PublishTab = ({ isCreating }) => {
         <SaveButton
           onClick={async () => {
             if (editorState.title.trim().length === 0) {
-              toast.error('Título muito pequeno ou inválido.');
+              toast.error('The title is too small.');
               return;
             }
             if (isCreating) {
               await noteThunks.create(dispatch, editorState).then(() => {
                 history.goBack();
               });
-              toast.success('Card criado com sucesso.');
+              toast.success('Card was created successfully.');
             } else {
               await noteThunks
                 .update(dispatch, editorState._id, editorState)
                 .then(() => {
                   history.goBack();
                 });
-              toast.success('Card atualizado com sucesso.');
+              toast.success('Card was updated successfully..');
             }
           }}
         >

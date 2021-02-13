@@ -77,7 +77,7 @@ function CreateNote({ add }) {
     if (!type) {
       if (validateUrl(inputURL)) {
       } else {
-        toast.error('Você informou uma url inválida.');
+        toast.error('Invalid URL');
       }
     }
   }
@@ -140,7 +140,7 @@ function CreateNote({ add }) {
               return <Tag {...item} outlined={true} />;
             })}
           <ButtonTag onClick={() => setIsVisibleTag(!isVisibleTag)}>
-            <p>Adicionar Tag</p> <span>+</span>
+            <p>Add tags</p> <span>+</span>
           </ButtonTag>
           <div className="tag">
             {isVisibleTag && (

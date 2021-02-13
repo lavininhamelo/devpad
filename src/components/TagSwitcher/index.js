@@ -21,10 +21,10 @@ export default ({ onTagCreated, onTagIsClicked, onCloseButton }, props) => {
       (value) => tagName.toLowerCase() === value.name.toLowerCase(),
     );
     if (isExists) {
-      return toast.error(`Já existe uma tag: ${tagName}`);
+      return toast.error(`The tag ${tagName} already exits`);
     }
     if (!tagName || tagName.trim() === '') {
-      return toast.error(`Por favor, informe um nome válido.`);
+      return toast.error(`Please, enter a correct name!`);
     }
     onTagCreated({
       name: tagName,
@@ -45,7 +45,7 @@ export default ({ onTagCreated, onTagIsClicked, onCloseButton }, props) => {
                 <input
                   type="text"
                   value={tagInput}
-                  placeholder="Criar tag"
+                  placeholder="New tag"
                   onKeyDown={(e) => {
                     if (e.key === 'Enter') {
                       return createNewTag(tagInput);

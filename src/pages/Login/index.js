@@ -31,10 +31,10 @@ function Login() {
       if (response.error) {
         toast.error(response.error);
       } else {
-        toast.success('Logado com sucesso!');
+        toast.success('Successfully logged in!');
       }
     } else {
-      toast.error('Por favor, preencha os campos corretamente.');
+      toast.error('Please, fill in the fields correctly.');
     }
   }
 
@@ -46,7 +46,7 @@ function Login() {
           Você pode acessar suas anotações de qualquer lugar e a qualquer
           momento.
         </p>
-        <img src={SVG} alt="Fazer login - DevPad" />
+        <img src={SVG} alt="Login In - DevPad" />
       </ImageContainer>
 
       <FormContainer>

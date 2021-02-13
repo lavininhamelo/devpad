@@ -35,13 +35,13 @@ function Register() {
       const response = await register(email, username, password);
       console.log(response);
       if (!response.error) {
-        toast.success('Registrado com sucesso!');
+        toast.success('Successfully registered!');
         history.push('/');
       } else {
         toast.error(response.error);
       }
     } else {
-      toast.error('Por favor, confira todos os campos e tamanho!');
+      toast.error('Fill in all fields');
     }
   }
 
@@ -92,7 +92,7 @@ function Register() {
       </FormContainer>
 
       <ImageContainer>
-        <img src={SVG} alt="Registrar-se - DevPad" />
+        <img src={SVG} alt="Sign In - DevPad" />
         <h2>Deixe o DevPad lembrar por você!</h2>
         <p>
           Nunca mais perca conteúdos, ideias ou links interessantes, salve tudo

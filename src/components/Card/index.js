@@ -29,10 +29,10 @@ export default ({ isRedirect, url, id, title, tags, path }) => {
     noteThunks
       .remove(dispatch, id)
       .then(() => {
-        toast.success('Card deletado com sucesso.');
+        toast.success('Card was deleted.');
       })
       .catch((err) => {
-        toast.error('Houve um erro ao deletar o card ' + err.getMessage());
+        toast.error('There was an error deleting the card ' + err.getMessage());
       });
 
     setOpenedModal(false);
@@ -41,10 +41,10 @@ export default ({ isRedirect, url, id, title, tags, path }) => {
   return (
     <>
       <ModalDialog
-        message={`Deseja deletar o card: ${title}`}
+        message={`Do you want to delete the card: ${title}`}
         icon={faTrash}
         buttons={['OK', 'Cancelar']}
-        title="Confirmar exclusão ?"
+        title="Delete card?"
         condition={openedModal}
         onCancel={() => {
           setOpenedModal(false);
